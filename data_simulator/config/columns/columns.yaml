@@ -1,0 +1,2033 @@
+columns:
+  ACCESS_TYPE_NAME:
+    field_name: Access Type Name
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  ACCOUNTING_RECORD_TYPE:
+    field_name: Accounting Record Type
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  ACCOUNT_SESSION_ID:
+    field_name: Account Session ID
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  APN:
+    field_name: APN
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  APN_AMBR_DL:
+    field_name: APN AMBR DL
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  APN_AMBR_UL:
+    field_name: APN AMBR UL
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  APN_SERVICE:
+    field_name: APN Service
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  APPLICATION_ID:
+    field_name: Application ID
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  ASR:
+    field_name: ASR
+    simulation:
+      distribution: uniform
+      params:
+        max: 1000000
+        min: 0
+      type: random
+    type: BIGINT
+  AUTHENTICATE:
+    field_name: Authenticate
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  AUTHENTICATION_CONTEXT:
+    field_name: Authentication Context
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  AUTH_APPLICATION_ID:
+    field_name: Auth Application Id
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  BWD_CONTACT_URI_DOMAIN:
+    field_name: Backward Contact URI Domain
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  BWD_CONTACT_URI_USER:
+    field_name: Backward Contact URI User
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  BYE_COUNT:
+    field_name: BYE Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  CALLED_COUNTRY_CODE:
+    field_name: Called Country Code
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CALLED_PARTY:
+    field_name: Called Party
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CALLED_STATION_ID:
+    field_name: Called Station ID
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CALLING_COUNTRY_CODE:
+    field_name: Calling Country Code
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CALLING_PARTY:
+    field_name: Calling Party
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CALLING_PARTY_SUFFIX:
+    field_name: Calling Party suffix
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CALL_DURATION:
+    field_name: Session Duration
+    simulation:
+      distribution: normal
+      params:
+        max: 1000000.0
+        mean: 5000.0
+        min: 0.0
+        std_dev: 1000.0
+      type: random
+    type: NUMERIC(14,2)
+  CALL_ID:
+    field_name: Call ID
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CALL_TYPE:
+    field_name: Phy.Layer-Signaling
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CANCEL_COUNT:
+    field_name: CANCEL Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  CARRIER_ID_CODE:
+    field_name: Carrier Identification Code
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CDR_ID:
+    field_name: CDR ID
+    simulation:
+      distribution: normal
+      params:
+        max: 1000000.0
+        mean: 5000.0
+        min: 0.0
+        std_dev: 1000.0
+      type: random
+    type: NUMERIC(14,2)
+  CGI:
+    field_name: CGI
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CHARGING_ID:
+    field_name: Charging ID
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CHARGING_RULE_BASE_NAME:
+    field_name: Charging Rule Base Name
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CHARGING_RULE_BASE_NAME_DEF:
+    field_name: Charging Rule Base Name Definition
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CHARGING_RULE_BASE_NAME_INSTAL:
+    field_name: Charging Rule Base Name Install
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CHARGING_RULE_BASE_NAME_REMOVE:
+    field_name: Charging Rule Base Name Remove
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CHARGING_RULE_NAME:
+    field_name: Charging Rule Name
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CLASSIFICATION_TYPE:
+    field_name: Classification Type
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  COMMAND_CODE:
+    field_name: Command Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  CONNECTION_TIME:
+    field_name: Connection Time
+    simulation:
+      distribution: datetime
+      params:
+        end: '2023-12-31T23:59:59'
+        start: '2023-01-01T00:00:00'
+      type: random
+    type: TIMESTAMP
+  CONNECTION_TYPE:
+    field_name: Connection Type
+    simulation:
+      distribution: uniform
+      params:
+        max: 100
+        min: 0
+      type: random
+    type: SMALLINT
+  CONTRIBUTIONID:
+    field_name: ContributionID
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CONVERSATIONID:
+    field_name: ConversationID
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CONVERSION_AUTH_SESSION_STATE:
+    field_name: Auth Session State
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  CORRELATION_CALL_ID:
+    field_name: Correlation Call ID
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  CORRELATION_SESSION_ID:
+    field_name: Correlation Session ID
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  CORRELATION_SESSION_IDS:
+    field_name: Correlation Session IDs
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  CORRELATION_USER_SESSION_ID:
+    field_name: Correlation User Session ID
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  COUNTER:
+    field_name: Counter Field
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  CPC:
+    field_name: CPC
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DEREGISTRATION_REASON_CODE:
+    field_name: De Registration Reason Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  DEREGISTRATION_REASON_INFO:
+    field_name: De Registration Reason Info
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DESTINATION_HOST:
+    field_name: Destination Host
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DESTINATION_HOST_NAME:
+    field_name: Destination Host Name
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DESTINATION_REALM:
+    field_name: Destination Realm
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DESTINATION_REALM_NAME:
+    field_name: Destination Realm Name
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DEST_ALIAS_FULL:
+    field_name: DST Alias
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DEST_DSCP:
+    field_name: Dest DSCP
+    simulation:
+      distribution: uniform
+      params:
+        max: 100
+        min: 0
+      type: random
+    type: SMALLINT
+  DEST_IP:
+    field_name: DST Sig IP
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DEST_IP_PORT:
+    field_name: DST Sig IP Port
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DEST_MASK_IP:
+    field_name: DST Sig Mask IP
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DEST_NE_NAME:
+    field_name: Dest NE Name
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DEST_PHONE_NUMBER:
+    field_name: Correlation DST Number
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DISCONNECTION_TIME:
+    field_name: Disconnection Time
+    simulation:
+      distribution: datetime
+      params:
+        end: '2023-12-31T23:59:59'
+        start: '2023-01-01T00:00:00'
+      type: random
+    type: TIMESTAMP
+  DIVERSION:
+    field_name: Diversion
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DIVERSION_REASON:
+    field_name: Diversion Reason
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DRA_COUNT:
+    field_name: DRA Count
+    simulation:
+      distribution: uniform
+      params:
+        max: 100
+        min: 0
+      type: random
+    type: SMALLINT
+  DRA_IP_ADDRESS:
+    field_name: DRA IP
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  DROP_CALL_COUNT:
+    field_name: Drop Call Count
+    simulation:
+      distribution: normal
+      params:
+        max: 1000000.0
+        mean: 5000.0
+        min: 0.0
+        std_dev: 1000.0
+      type: random
+    type: NUMERIC(14,2)
+  DSCP:
+    field_name: DSCP
+    simulation:
+      distribution: uniform
+      params:
+        max: 100
+        min: 0
+      type: random
+    type: SMALLINT
+  DST_IMSI:
+    field_name: DST IMSI
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  END_TIME:
+    field_name: End Time
+    simulation:
+      distribution: datetime
+      params:
+        end: '2023-12-31T23:59:59'
+        start: '2023-01-01T00:00:00'
+      type: random
+    type: TIMESTAMP
+  END_TO_END:
+    field_name: End-to-End
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  ERROR_MESSAGE:
+    field_name: Error Message
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  EVENT_TRIGGER:
+    field_name: Event Trigger
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  EVENT_TYPE:
+    field_name: Event Type
+    simulation:
+      distribution: uniform
+      params:
+        max: 100
+        min: 0
+      type: random
+    type: SMALLINT
+  EXPIRY_TIME:
+    field_name: Expiry Time
+    simulation:
+      distribution: normal
+      params:
+        max: 1000000.0
+        mean: 5000.0
+        min: 0.0
+        std_dev: 1000.0
+      type: random
+    type: NUMERIC(14,2)
+  FAILED_AVP:
+    field_name: Failed AVP
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  FILTERED_DEST_IP:
+    field_name: Filtered DST Sig IP
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  FILTERED_OUT_RTP_DEST_IP:
+    field_name: Filtered DST RTP IP Out
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  FILTERED_SOURCE_IP:
+    field_name: Filtered SRC Sig IP
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  FRAMES_COUNT:
+    field_name: Frames Count
+    simulation:
+      distribution: uniform
+      params:
+        max: 1000000
+        min: 0
+      type: random
+    type: BIGINT
+  FRAMES_COUNT_SAVED:
+    field_name: Frames Count Saved
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  FWD_CONTACT_URI_DOMAIN:
+    field_name: Forward Contact URI Domain
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  FWD_CONTACT_URI_USER:
+    field_name: Forward Contact URI User
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  HOLD_CALL_COUNT:
+    field_name: Hold Call Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  HOP_BY_HOP:
+    field_name: Hop-by-Hop
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  IMDN_MESSAGE:
+    field_name: IMDN_Message
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  IMEI:
+    field_name: IMEI
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  IMPU:
+    field_name: IMPU
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  IMSI:
+    field_name: IMSI
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  IMS_CHARGING_ID:
+    field_name: IMS Charging ID
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  IMS_USER_STATE:
+    field_name: IMS User State
+    simulation:
+      distribution: uniform
+      params:
+        max: 100
+        min: 0
+      type: random
+    type: SMALLINT
+  INFO_COUNT:
+    field_name: INFO Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  IN_HOLD_CALL_COUNT:
+    field_name: Total Hold Call Count In
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  IN_HOLD_CALL_DURATION:
+    field_name: Total Hold Call Duration In
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  IN_JITTER_AVG:
+    field_name: Jitter Avg In
+    simulation:
+      distribution: uniform
+      params:
+        max: 1000000
+        min: 0
+      type: random
+    type: BIGINT
+  IN_MERGE_CACHE:
+    field_name: In Merge Cache
+    simulation:
+      distribution: datetime
+      params:
+        end: '2023-12-31T23:59:59'
+        start: '2023-01-01T00:00:00'
+      type: random
+    type: TIMESTAMP
+  IN_PACKET_LOSS_AVG:
+    field_name: Packet Loss Avg In
+    simulation:
+      distribution: uniform
+      params:
+        max: 1000000
+        min: 0
+      type: random
+    type: BIGINT
+  IN_PMOS_AVG:
+    field_name: Passive MOS Avg In
+    simulation:
+      distribution: uniform
+      params:
+        max: 1000000
+        min: 0
+      type: random
+    type: BIGINT
+  IN_RTP_DEST_IP:
+    field_name: DST RTP IP In
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  IN_RTP_DEST_IP_PORT:
+    field_name: DST RTP IP Port In
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  IN_TOTAL_MUTE_COUNT:
+    field_name: Total Mute Count In
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  IN_TOTAL_RTP_PACKETS:
+    field_name: Total RTP Packets In
+    simulation:
+      distribution: normal
+      params:
+        max: 1000000.0
+        mean: 5000.0
+        min: 0.0
+        std_dev: 1000.0
+      type: random
+    type: NUMERIC(14,2)
+  IP_CAN_TYPE:
+    field_name: IP CAN Type
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  KASME:
+    field_name: KASME
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  LAC:
+    field_name: LAC
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  LAST_RESPONSE_CAUSE:
+    field_name: Last Response Cause
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  MANUFACTURER:
+    field_name: Manufacturer
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  MCC:
+    field_name: MCC
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  MCPTT_GROUP_ID:
+    field_name: MCPTT GROUP ID
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  MCPTT_PARTY_ID:
+    field_name: MCPTT PARTY ID
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  MCPTT_SUBSCRIBER_ID:
+    field_name: MCPTT Subscriber ID
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  MC_SERVICE:
+    field_name: MC Service
+    simulation:
+      distribution: uniform
+      params:
+        max: 100
+        min: 0
+      type: random
+    type: SMALLINT
+  MEASURING_PROBE_LOC_ID:
+    field_name: Location
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  MEASURING_PROBE_NAME:
+    field_name: Measuring Probe
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  MEASURING_PROBE_NAME_1:
+    field_name: Measuring Probe 1
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  MEASURING_PROBE_NAME_2:
+    field_name: Measuring Probe 2
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  MEASURING_PROBE_TYPE:
+    field_name: Measuring Probe Type
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  MEDIA_TYPE:
+    field_name: Media Type
+    simulation:
+      distribution: uniform
+      params:
+        max: 100
+        min: 0
+      type: random
+    type: SMALLINT
+  MERGE_FLAG:
+    field_name: Merge Flag
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  MESSAGE_CONTENT_TYPE:
+    field_name: Message Content Type
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  MESSAGE_COUNT:
+    field_name: MESSAGE Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  MNC:
+    field_name: MNC
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  MN_NAI:
+    field_name: User Name
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  MODEL:
+    field_name: MODEL
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  MSG_COUNT:
+    field_name: MSG Count
+    simulation:
+      distribution: normal
+      params:
+        max: 1000000.0
+        mean: 5000.0
+        min: 0.0
+        std_dev: 1000.0
+      type: random
+    type: NUMERIC(14,2)
+  MSISDN:
+    field_name: MSISDN
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  MS_IP_ADDRESS:
+    field_name: MS IP Address
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  NER:
+    field_name: NER
+    simulation:
+      distribution: uniform
+      params:
+        max: 1000000
+        min: 0
+      type: random
+    type: BIGINT
+  NOTIFY_COUNT:
+    field_name: NOTIFY Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  NOTIF_EFF:
+    field_name: Notif Eff
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  NUMBER_OF_REQUESTS:
+    field_name: Number of Requests
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  NUMBER_OF_RESPONSES:
+    field_name: Number of Responses
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  NUM_OF_COMPLETED_HOPS:
+    field_name: Number of Completed Hops
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  NUM_OF_HOPS:
+    field_name: Number of Hops
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  NUM_OF_RETRANSMISSION_FRAMES:
+    field_name: Number of Retransmission frames
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  OPTIONS_COUNT:
+    field_name: OPTIONS Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  ORIGINATING_PATH:
+    field_name: Originating Path
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  ORIGIN_HOST:
+    field_name: Origin Host
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  ORIGIN_HOST_NAME:
+    field_name: Origin Host Name
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  ORIGIN_REALM:
+    field_name: Origin Realm
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  ORIGIN_REALM_NAME:
+    field_name: Origin Realm Name
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  ORIGIN_STATE_ID:
+    field_name: Origin State Id
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  OUT_HOLD_CALL_COUNT:
+    field_name: Total Hold Call Count Out
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  OUT_HOLD_CALL_DURATION:
+    field_name: Total Hold Call Duration Out
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  OUT_JITTER_AVG:
+    field_name: Jitter Avg Out
+    simulation:
+      distribution: uniform
+      params:
+        max: 1000000
+        min: 0
+      type: random
+    type: BIGINT
+  OUT_MERGE_CACHE:
+    field_name: Out Merge Cache
+    simulation:
+      distribution: datetime
+      params:
+        end: '2023-12-31T23:59:59'
+        start: '2023-01-01T00:00:00'
+      type: random
+    type: TIMESTAMP
+  OUT_PACKET_LOSS_AVG:
+    field_name: Packet Loss Avg Out
+    simulation:
+      distribution: uniform
+      params:
+        max: 1000000
+        min: 0
+      type: random
+    type: BIGINT
+  OUT_PMOS_AVG:
+    field_name: Passive MOS Avg Out
+    simulation:
+      distribution: uniform
+      params:
+        max: 1000000
+        min: 0
+      type: random
+    type: BIGINT
+  OUT_RTP_DEST_IP:
+    field_name: DST RTP IP Out
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  OUT_RTP_DEST_IP_PORT:
+    field_name: DST RTP IP Port Out
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  OUT_TOTAL_MUTE_COUNT:
+    field_name: Total Mute Count Out
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  OUT_TOTAL_RTP_PACKETS:
+    field_name: Total RTP Packets Out
+    simulation:
+      distribution: normal
+      params:
+        max: 1000000.0
+        mean: 5000.0
+        min: 0.0
+        std_dev: 1000.0
+      type: random
+    type: NUMERIC(14,2)
+  PASSERTED:
+    field_name: PAsserted
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  PDD:
+    field_name: PDD
+    simulation:
+      distribution: uniform
+      params:
+        max: 1000000
+        min: 0
+      type: random
+    type: BIGINT
+  PLMN_IDENTITY:
+    field_name: PLMN Identity
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  PRACK_COUNT:
+    field_name: PRACK Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  PROCEDURE_DURATION:
+    field_name: Procedure Duration
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  PROCEDURE_SUBTYPE:
+    field_name: Procedure Subtype
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  PROCEDURE_TYPE:
+    field_name: Procedure Type
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  PSI_ACTIVATION:
+    field_name: PSI Activation
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  PUBLIC_IDENTITY:
+    field_name: Public Identity
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  PUBLISH_COUNT:
+    field_name: PUBLISH Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  P_ACCESS_NETWORK_INFO:
+    field_name: P-Access-Network-Info
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  P_SERVED_USER:
+    field_name: P-Served-User
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  QMANAGER_TIME_STAMP:
+    field_name: Arrival Time Stamp
+    simulation:
+      distribution: datetime
+      params:
+        end: '2023-12-31T23:59:59'
+        start: '2023-01-01T00:00:00'
+      type: random
+    type: TIMESTAMP
+  RAC:
+    field_name: RAC
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  RAI:
+    field_name: RAI
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  RAT_TYPE:
+    field_name: RAT Type
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  RAT_TYPE_NAME:
+    field_name: RAT Type Name
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  REFER_COUNT:
+    field_name: REFER Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  REINVITE_COUNT:
+    field_name: RE-INVITE Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  RELEASE_CAUSE:
+    field_name: Release Cause
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  RELEASE_DIRECTION:
+    field_name: Release Direction
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  REQUEST_NUMBER:
+    field_name: Request Number
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  REQUEST_TYPE:
+    field_name: Request Type
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  RESOURCE_PRIORITY:
+    field_name: Resource Priority
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  REVOKE_TYPE:
+    field_name: Revoke Type
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  RINGING_TIME:
+    field_name: Ringing Time
+    simulation:
+      distribution: datetime
+      params:
+        end: '2023-12-31T23:59:59'
+        start: '2023-01-01T00:00:00'
+      type: random
+    type: TIMESTAMP
+  ROAMING_DIRECTION:
+    field_name: Roaming Direction
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  ROAMING_STATUS:
+    field_name: Roaming Status
+    simulation:
+      distribution: uniform
+      params:
+        max: 100
+        min: 0
+      type: random
+    type: SMALLINT
+  SAC:
+    field_name: SAC
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SCSCF_NAME:
+    field_name: S-CSCF Name
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SENT_INITIAL_CDR:
+    field_name: Sent Initial CDR
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SERVER_ASSIGNMENT_TYPE:
+    field_name: Server Assignment Type
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SERVER_AUTHORIZATION_TYPE:
+    field_name: Server Authorization Type
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SERVICE:
+    field_name: Service
+    simulation:
+      distribution: uniform
+      params:
+        max: 100
+        min: 0
+      type: random
+    type: SMALLINT
+  SERVICE_LEVEL_TRACE_INFO:
+    field_name: Service Level Trace Info
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SERV_PRO_CORRELATION_ID:
+    field_name: Service Profile Corr ID
+    simulation:
+      distribution: normal
+      params:
+        max: 1000000.0
+        mean: 5000.0
+        min: 0.0
+        std_dev: 1000.0
+      type: random
+    type: NUMERIC(14,2)
+  SESSION_ID:
+    field_name: Session ID
+    simulation:
+      distribution: normal
+      params:
+        max: 1000000.0
+        mean: 5000.0
+        min: 0.0
+        std_dev: 1000.0
+      type: random
+    type: NUMERIC(14,2)
+  SESSION_RELEASE_CAUSE:
+    field_name: Session Release Cause
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SETUP_INVITE_COUNT:
+    field_name: SETUP-INVITE Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIGNALING_CODECS:
+    field_name: Signaling Codecs
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SIGNALING_FILE_NAME:
+    field_name: Session View
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SIP_1XX_COUNT:
+    field_name: SIP 1XX Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_2XX_COUNT:
+    field_name: SIP 2XX Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_3XX_COUNT:
+    field_name: SIP 3XX Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_4XX_COUNT:
+    field_name: SIP 4XX Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_5XX_COUNT:
+    field_name: SIP 5XX Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_6XX_COUNT:
+    field_name: SIP 6XX Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_BYE_RESPONSE_CODE:
+    field_name: SIP BYE Response Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_CANCEL_RESPONSE_CODE:
+    field_name: SIP CANCEL Response Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_EVENT_HEADER:
+    field_name: SIP Event Header
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SIP_INFO_RESPONSE_CODE:
+    field_name: SIP INFO Response Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_MESSAGE_RESPONSE_CODE:
+    field_name: SIP MESSAGE Response Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_NOTIFY_RESPONSE_CODE:
+    field_name: SIP NOTIFY Response Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_OPTIONS_RESPONSE_CODE:
+    field_name: SIP OPTIONS Response Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_PRACK_RESPONSE_CODE:
+    field_name: SIP PRACK Response Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_PUBLISH_RESPONSE_CODE:
+    field_name: SIP PUBLISH Response Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_REASON:
+    field_name: SIP Reason
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SIP_REASON_PROTOCOL:
+    field_name: SIP Reason Protocol
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SIP_REASON_TEXT:
+    field_name: SIP Reason Text
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SIP_REFER_RESPONSE_CODE:
+    field_name: SIP REFER Response Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_REINVITE_RESPONSE_CODE:
+    field_name: SIP REINVITE Response Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_RESPONSE_CODES:
+    field_name: SIP Response Codes
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SIP_SESSION_ID:
+    field_name: SIP Session ID
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SIP_SETUP_INVITE_RESPONSE_CODE:
+    field_name: SIP SETUP INVITE Response Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_SUBSCRIBE_RESPONSE_CODE:
+    field_name: SIP SUBSCRIBE Response Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SIP_UPDATE_RESPONSE_CODE:
+    field_name: SIP UPDATE Response Code
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SOURCE_ALIAS_FULL:
+    field_name: SRC Alias
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SOURCE_IP:
+    field_name: SRC Sig IP
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SOURCE_IP_PORT:
+    field_name: SRC Sig IP Port
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SOURCE_MASK_IP:
+    field_name: SRC Sig Mask IP
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SOURCE_NE_NAME:
+    field_name: Source NE Name
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SOURCE_PHONE_NUMBER:
+    field_name: Correlation SRC Number
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SRC_IMSI:
+    field_name: SRC IMSI
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  START_TIME:
+    field_name: Start Time
+    simulation:
+      distribution: datetime
+      params:
+        end: '2023-12-31T23:59:59'
+        start: '2023-01-01T00:00:00'
+      type: random
+    type: TIMESTAMP
+  STN_SR:
+    field_name: STN-SR
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SUBSCRIBE_COUNT:
+    field_name: SUBSCRIBE Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  SUBSCRIPTION_ID:
+    field_name: Subscription Id
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  SUBS_REQ_TYPE:
+    field_name: Subs Req Type
+    simulation:
+      distribution: uniform
+      params:
+        max: 100
+        min: 0
+      type: random
+    type: SMALLINT
+  TAC:
+    field_name: TAC
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  TAC_CATEGORY:
+    field_name: TAC Category
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  TAI_TAC:
+    field_name: TAI TAC
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  TDF_APPLICATION_ID:
+    field_name: TDF Application Id
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  TERMINATING_CGI:
+    field_name: Terminating CGI
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  TERMINATING_PATH:
+    field_name: Terminating Path
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  TERMINATION_CAUSE:
+    field_name: Termination Cause
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  TERM_ACCESS_TYPE_NAME:
+    field_name: Term Access Type Name
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  TERM_ROAMING_DIRECTION:
+    field_name: Term Roaming Direction
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  TERM_ROAMING_STATUS:
+    field_name: Term Roaming Status
+    simulation:
+      distribution: uniform
+      params:
+        max: 100
+        min: 0
+      type: random
+    type: SMALLINT
+  TIME_STAMP:
+    field_name: Time Stamp
+    simulation:
+      distribution: datetime
+      params:
+        end: '2023-12-31T23:59:59'
+        start: '2023-01-01T00:00:00'
+      type: random
+    type: TIMESTAMP
+  TMGI:
+    field_name: TMGI
+    simulation:
+      distribution: normal
+      params:
+        max: 1000000.0
+        mean: 5000.0
+        min: 0.0
+        std_dev: 1000.0
+      type: random
+    type: NUMERIC(14,2)
+  TMGI_HEX:
+    field_name: TMGI_HEX
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  TOTAL_BYTES_RECEIVED_BY_MS:
+    field_name: Total Data DL
+    simulation:
+      distribution: normal
+      params:
+        max: 1000000.0
+        mean: 5000.0
+        min: 0.0
+        std_dev: 1000.0
+      type: random
+    type: NUMERIC(14,2)
+  TOTAL_BYTES_SEND_BY_MS:
+    field_name: Total Data UL
+    simulation:
+      distribution: normal
+      params:
+        max: 1000000.0
+        mean: 5000.0
+        min: 0.0
+        std_dev: 1000.0
+      type: random
+    type: NUMERIC(14,2)
+  TOTAL_DL_FRAMES:
+    field_name: Total DL Frames
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  TOTAL_UL_FRAMES:
+    field_name: Total UL Frames
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  TRANSPORT_LAYER_PROTOCOL:
+    field_name: Transport Layer Protocol
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  TRANSPORT_LAYER_PROTOCOL_LIST:
+    field_name: Transport Layer Protocol List
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  UNIQUE_CDR_ID:
+    field_name: Unique Cdr Id
+    simulation:
+      distribution: normal
+      params:
+        max: 1000000.0
+        mean: 5000.0
+        min: 0.0
+        std_dev: 1000.0
+      type: random
+    type: NUMERIC(14,2)
+  UPDATE_COUNT:
+    field_name: UPDATE Count
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  USER_AGENT:
+    field_name: User Agent
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  USER_AGENT_B:
+    field_name: User Agent B
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  USER_IDENTITY:
+    field_name: User Identity
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)
+  USER_STATE:
+    field_name: User State
+    simulation:
+      distribution: uniform
+      params:
+        max: 100
+        min: 0
+      type: random
+    type: SMALLINT
+  VLAN_ID:
+    field_name: VLAN ID
+    simulation:
+      start: 1000
+      step: 1
+      type: sequence
+    type: INTEGER
+  VLAN_ID_LIST:
+    field_name: VLAN ID List
+    simulation:
+      distribution: string
+      params:
+        length: 10
+      type: random
+    type: VARCHAR(100)

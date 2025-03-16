@@ -1,0 +1,15 @@
+services:
+  data-simulator:
+    build: .
+    container_name: data_simulator_container
+    volumes:
+      - ./data_simulator/config/config.yaml:/app/data_simulator/config/config.yaml:rw
+      - ./data_simulator/config/columns/columns.yaml:/app/data_simulator/config/columns/columns.yaml:rw
+      - ./data_simulator/config/tables:/app/data_simulator/config/tables
+    networks:
+      - vertica-network
+    restart: unless-stopped
+
+networks:
+  vertica-network:
+    external: true
