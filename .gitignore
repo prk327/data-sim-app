@@ -1,0 +1,52 @@
+# Python bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment directories
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Distribution / packaging
+*.egg
+*.egg-info/
+dist/
+build/
+*.tar.gz
+*.whl
+
+# Python test / coverage reports
+*.cover
+*.py,cover
+*.coverage
+*.hypothesis/
+.pytest_cache/
+
+# IDE / Editor directories and files
+.idea/
+.vscode/
+*.swp
+*~.nib
+*.sublime-workspace
+*.sublime-project
+
+# Logs
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Cython debugging files
+cython_debug/
+
+# Other common ignored files
+*.bak
+*.tmp
