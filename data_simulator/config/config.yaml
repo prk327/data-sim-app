@@ -1,5 +1,5 @@
 vertica:
-  host: "vertica-ce"
+  host: "vertica-ce"  # to connect to host from wsl use "host.docker.internal"
   port: 5433
   user: "cognos"
   password: "admin1234"
