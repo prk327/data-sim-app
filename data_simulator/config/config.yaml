@@ -16,78 +16,118 @@ yaml_path:
   tables: "config/tables"  # Directory for table YAML files
 
 tables:
-  - users
-  - products
-  - orders
-  - CDR_HPA_SIP
+  - CDR_GN
+  - CDR_S1AP
   - CDR_HPA_DIAMETER
+  - CDR_HPA_SIP
+  - CDR_SGS
+  - CDR_CN
+  - CDR_CN_ISUP
+  - CDR_CN_BICC
+  - CDR_IU_SCCP
+  - CDR_NGAP
+  - CDR_GI
+  - CDR_DNS
+  - CDR_SIP_REG
+  - CDR_HTTP2
+  - CDR_RRC_X2_LTE
+  - CDR_PFCP
 
 generate_rows: 1000
 
 type_mapping:
-  Float: DECIMAL(10,2)
-  Integer: INTEGER
-  Double: BIGINT
-  String: VARCHAR(100)
-  Long: NUMERIC(14,2)
-  IP: VARCHAR(100)
+  Float: numeric(13,2)
+  Integer: numeric(11,0)
+  Double: numeric(14,3)
+  String: varchar(50)
+  Long: numeric(20,0)
+  IP: varchar(150)
   Binary: BINARY
-  Short: SMALLINT
+  Short: numeric(4,0)
   "Time Stamp": TIMESTAMP
   Date: TIMESTAMP
-  "Custom Field Item": VARCHAR(100)
-  BigDouble: BIGINT
+  "Custom Field Item": varchar(50)
+  BigDouble: numeric(16,2)
   Boolean: BOOLEAN
+  "EDR Start Time": TIMESTAMP
 
 simulation_config:
-  DECIMAL(10,2):
+  numeric(13,2):  # Float
     type: random
     distribution: normal
     params:
-      mean: 100.0
-      std_dev: 25.0
-      max: 99999999.99
+      mean: 1000.0
+      std_dev: 500.0
+      max: 99999999999.99
       min: 0.01
-  INTEGER:
-    type: sequence
-    start: 1000
-    step: 1
-  BIGINT:
+
+  numeric(11,0):  # Integer
     type: random
     distribution: uniform
     params:
+      max: 99999999999
       min: 0
-      max: 1000000
-  VARCHAR(100):
-    type: random
-    distribution: string
-    params:
-      length: 10
-  NUMERIC(14,2):
+
+  numeric(14,3):  # Double
     type: random
     distribution: normal
     params:
-      mean: 5000.0
-      std_dev: 1000.0
-      max: 1000000.0
-      min: 0.0
-  BINARY:
+      mean: 1000.0
+      std_dev: 500.0
+      max: 999999999999.999
+      min: 0.001
+
+  varchar(50):  # String
+    type: faker
+    method: word
+    params:
+      ext_word_list: ["call", "sms", "data", "roaming", "voice", "mms", "location", "device", "network", "subscription"]
+
+  numeric(20,0):  # Long
+    type: random
+    distribution: uniform
+    params:
+      max: 99999999999999999999
+      min: 0
+
+  varchar(150):  # IP
+    type: faker
+    method: ipv4
+
+  BINARY:  # Binary
     type: random
     distribution: binary
     params:
-      length: 16
-  SMALLINT:
+      length: 16  # Example binary length
+
+  numeric(4,0):  # Short
     type: random
     distribution: uniform
     params:
+      max: 9999
       min: 0
-      max: 100
-  TIMESTAMP:
-    type: random
-    distribution: datetime
+
+  TIMESTAMP:  # Time Stamp
+    type: faker
+    method: date_time_between
     params:
-      start: "2023-01-01T00:00:00"
-      end: "2023-12-31T23:59:59"
+      start_date: "-5m"
+      end_date: "now"
+
+  numeric(16,2):  # BigDouble
+    type: random
+    distribution: normal
+    params:
+      mean: 10000.0
+      std_dev: 5000.0
+      max: 99999999999999.99
+      min: 0.01
+
+  BOOLEAN:  # Boolean
+    type: random
+    distribution: choice
+    params:
+      choices: [True, False]
 
               # ┌───────────── minute (0 - 59)
               # │ ┌───────────── hour (0 - 23)
