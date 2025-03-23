@@ -1,6 +1,0 @@
-# users.yaml
-table_name: users
-primary_key: user_id  # Explicitly define the primary key
-columns:
-  - username
-  - created_at

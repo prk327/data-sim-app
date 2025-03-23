@@ -2,14 +2,16 @@ services:
   data-simulator:
     build: .
     container_name: data_simulator_container
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # Allows access to the host machine
     volumes:
       - ./data_simulator/config/config.yaml:/app/data_simulator/config/config.yaml:rw
-      - ./data_simulator/config/columns/columns.yaml:/app/data_simulator/config/columns/columns.yaml:rw
+      - ./data_simulator/config/columns:/app/data_simulator/config/columns
       - ./data_simulator/config/tables:/app/data_simulator/config/tables
-    networks:
-      - vertica-network
+    # networks:
+    #   - vertica-network
     restart: unless-stopped
 
-networks:
-  vertica-network:
-    external: true
+# networks:
+#   vertica-network:
+#     external: true

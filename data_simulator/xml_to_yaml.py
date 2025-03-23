@@ -194,9 +194,9 @@ class ConfigGenerator:
                     continue  # Skip fields not belonging to any table
 
                 # Default to VARCHAR(100) if type is missing in type_mapping
-                db_type = type_mapping.get(field_type, "VARCHAR(100)")
+                db_type = type_mapping.get(field_type, "varchar(200)")
                 if field_type not in type_mapping:
-                    self.logger.warning(f"Missing type mapping for field: {field_name}, type: {field_type}. Defaulting to VARCHAR(100).")
+                    self.logger.warning(f"Missing type mapping for field: {field_name}, type: {field_type}. Defaulting to varchar(200).")
 
                 # Create a deep copy of the simulation config to avoid YAML anchors
                 simulation = copy.deepcopy(simulation_config.get(db_type, {}))
@@ -222,5 +222,5 @@ class ConfigGenerator:
 
 # Main execution
 if __name__ == "__main__":
-    config_generator = ConfigGenerator("data_simulator/config/config.yaml")
+    config_generator = ConfigGenerator("config/config.yaml")
     config_generator.run()

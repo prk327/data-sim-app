@@ -13,7 +13,9 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class VerticaDB:
-    def __init__(self):
+    def __init__(self, config_path):
+        self.script_dir = Path(__file__).parent
+        self.config_path = self.script_dir / config_path
         self.config = self._load_config()
         self.schema = self.config.get('schema', 'public')  # Default schema is 'public'
         self.connection_pool = []
@@ -23,13 +25,15 @@ class VerticaDB:
         self.executor = ThreadPoolExecutor(max_workers=self.config.get('max_workers', 4))
 
     def _load_config(self):
-        config_path = Path(__file__).parent / 'config' / 'config.yaml'
-        with open(config_path) as f:
+        """
+        Loads the configuration from the YAML file.
+        """
+        with open(self.config_path, 'r') as f:
             return yaml.safe_load(f)['vertica']
 
     def _load_sql_templates(self):
         templates = {}
-        sql_dir = Path(__file__).parent / 'sql'
+        sql_dir = self.script_dir / 'sql'
         for sql_file in sql_dir.glob('*.sql'):
             with open(sql_file) as f:
                 templates[sql_file.stem] = Template(f.read())
@@ -207,7 +211,7 @@ class VerticaDB:
 
 # Example Usage
 if __name__ == "__main__":
-    db = VerticaDB()
+    db = VerticaDB("config/config.yaml")
     
     # Insert example
     db.insert('users', {'username': 'John Doe', 'created_at': "2024-05-24"})

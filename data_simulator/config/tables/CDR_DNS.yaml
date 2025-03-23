@@ -1,0 +1,5 @@
+columns:
+- FRAMES_COUNT_SAVED
+- START_HOUR
+primary_key: CDR_ID
+table_name: CDR_DNS

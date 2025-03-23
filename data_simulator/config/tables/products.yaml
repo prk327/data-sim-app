@@ -1,5 +1,0 @@
-# products.yaml
-table_name: products
-primary_key: products_id  # Explicitly define the primary key
-columns:
-  - product_name

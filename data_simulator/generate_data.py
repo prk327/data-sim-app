@@ -25,28 +25,43 @@ class DataSimulator:
             "constraints": [],
             "simulation": {
                 "type": "faker",
-                "provider": "word"
+                "provider": "word",
+                "method": "words"
             }
         }
         
         
-    def __init__(self, db_config: dict):
+    def __init__(self, config_path: dict):
         self.faker = Faker()
-        self.config = db_config
+        self.script_dir = Path(__file__).parent
+        self.config_path = self.script_dir / config_path
+        self.config = self._load_config()
         self.tables = self._load_table_configs()
         self.columns = self._load_column_configs()
         self.generated_data = {}
         self.reference_cache = {}
         self.cache_lock = Lock()  # Lock for thread safety
-        self.db = VerticaDB()
+        self.db = VerticaDB(config_path)
         self.executor = ThreadPoolExecutor(max_workers=self.config.get('max_workers', 4))
 
-    def _load_config(self, config_path):
-        with open(config_path) as f:
+    def _load_config(self):
+        """
+        Loads the configuration from the YAML file.
+        """
+        with open(self.config_path, 'r') as f:
             return yaml.safe_load(f)
 
+    def _resolve_paths(self, key):
+        """
+        Resolves paths relative to the script directory.
+        """
+        return {
+            k: (self.script_dir / v).resolve()
+            for k, v in self.config[key].items()
+        }
+
     def _load_table_configs(self):
-        tables_dir = Path(__file__).parent / 'config' / 'tables'
+        tables_dir = self._resolve_paths('yaml_path')['tables']
         table_configs = {}
         
         for table_file in tables_dir.glob('*.yaml'):
@@ -58,7 +73,11 @@ class DataSimulator:
         return table_configs
         
     def _load_column_configs(self):
-        columns_dir = Path(__file__).parent / 'config' / 'columns'
+        columns_dir = self._resolve_paths('yaml_path')['columns']
+        # Convert to Path object
+        columnpath = Path(columns_dir)
+        # Get the parent directory
+        columns_dir = columnpath.parent
         column_configs = {}
 
         for column_file in columns_dir.glob('*.yaml'):
@@ -198,93 +217,111 @@ class DataSimulator:
     def _generate_column_data(self, col_config):
         sim_config = col_config.get('simulation', {})
         
-        if sim_config.get('type') == 'sequence':
+        if not sim_config:
+            raise ValueError("No simulation configuration found for the column.")
+
+        sim_type = sim_config.get('type')
+        
+        if sim_type == 'sequence':
             return self._handle_sequence(col_config)
             
-        elif sim_config.get('type') == 'faker':
-            provider = sim_config['provider']
+        elif sim_type == 'faker':
+            provider = sim_config.get('provider')
+            method = sim_config.get('method')
             params = sim_config.get('params', {})
             
-            # Handle product_name simulation
-            if provider == 'words':
-                # Simulate product names using 'word' or 'sentence'
-                return ' '.join(self.faker.words(**params))
-            else:
-                # Use the specified Faker provider
-                return getattr(self.faker, provider)(**params)
-                
-        elif sim_config.get('type') == 'enum':
-            return random.choices(
-                sim_config['values'],
-                weights=sim_config.get('weights'),
-                k=1
-            )[0]
+            if not method:
+                print(sim_config)
+                raise ValueError("Faker configuration must include 'method'.")
             
-        elif sim_config.get('type') == 'random':
+            # Handle special cases like 'words'
+            if provider == 'word' and method == 'words':
+                return ' '.join(self.faker.words(**params))
+
+            # Handle cases where the method is directly available on the Faker instance
+            if hasattr(self.faker, method):
+                return getattr(self.faker, method)(**params)
+
+            # Handle cases where the method is part of a provider
+            if provider:
+                faker_provider = getattr(self.faker, provider)
+                if hasattr(faker_provider, method):
+                    return getattr(faker_provider, method)(**params)
+                else:
+                    raise ValueError(f"Method '{method}' not found in provider '{provider}'.")
+            else:
+                raise ValueError(f"Method '{method}' not found in Faker instance.")
+                
+        elif sim_type == 'enum':
+            values = sim_config.get('values')
+            weights = sim_config.get('weights')
+            
+            if not values:
+                raise ValueError("Enum configuration must include 'values'.")
+            
+            return random.choices(values, weights=weights, k=1)[0]
+            
+        elif sim_type == 'random':
             return self._generate_random_value(sim_config)
             
-        elif sim_config.get('type') == 'date':
+        elif sim_type == 'date':
             return self._generate_date(sim_config)
             
-        return None  # Add default handlers as needed
+        else:
+            raise ValueError(f"Unsupported simulation type: {sim_type}")
 
     def _handle_sequence(self, col_config):
-        """
-        Generate sequential values for columns with 'sequence' simulation type.
+        sim_config = col_config.get('simulation', {})
+        start = sim_config.get('start', 0)
+        step = sim_config.get('step', 1)
         
-        Args:
-            col_config (dict): Column configuration containing simulation rules.
-            
-        Returns:
-            int: The next value in the sequence.
-            
-        Raises:
-            ValueError: If the simulation configuration is invalid.
-        """
-        # Initialize sequences dictionary if it doesn't exist
-        if not hasattr(self, '_sequences'):
-            self._sequences = {}
+        if not hasattr(self, '_sequence_counter'):
+            self._sequence_counter = start
+        else:
+            self._sequence_counter += step
         
-        # Validate simulation configuration
-        simulation_config = col_config.get('simulation', {})
-        if not simulation_config or simulation_config.get('type') != 'sequence':
-            raise ValueError("Invalid simulation configuration for sequence type.")
-        
-        # Use column name as the sequence key
-        seq_name = col_config.get('name', 'default_sequence')
-        
-        # Initialize sequence if it doesn't exist
-        if seq_name not in self._sequences:
-            start = simulation_config.get('start', 1)  # Default start value is 1
-            if not isinstance(start, int):
-                raise ValueError("Sequence 'start' value must be an integer.")
-            self._sequences[seq_name] = start
-        
-        # Get the current value and increment the sequence
-        current = self._sequences[seq_name]
-        step = simulation_config.get('step', 1)  # Default step value is 1
-        if not isinstance(step, int):
-            raise ValueError("Sequence 'step' value must be an integer.")
-        
-        self._sequences[seq_name] += step
-        return current
+        return self._sequence_counter
 
     def _generate_random_value(self, sim_config):
-        dist_type = sim_config['distribution']
-        params = sim_config['params']
+        distribution = sim_config.get('distribution')
+        params = sim_config.get('params', {})
         
-        if dist_type == 'normal':
-            val = random.gauss(params['mean'], params['std_dev'])
-            return max(min(val, params['max']), params['min'])
+        if distribution == 'normal':
+            mean = params.get('mean', 0)
+            std_dev = params.get('std_dev', 1)
+            value = random.normalvariate(mean, std_dev)
+            # Clip to min and max if provided
+            if 'min' in params and 'max' in params:
+                value = max(params['min'], min(params['max'], value))
+            # Round to precision if provided
+            precision = params.get('precision')
+            if precision is not None:
+                value = round(value, precision)
+            return value
             
-        elif dist_type == 'uniform':
-            return random.uniform(params['min'], params['max'])
+        elif distribution == 'uniform':
+            min_val = params.get('min', 0)
+            max_val = params.get('max', 1)
+            value = random.uniform(min_val, max_val)
+            # Round to precision if provided
+            precision = params.get('precision')
+            if precision is not None:
+                value = round(value, precision)
+            return value
+            
+        elif distribution == 'choice':
+            choices = params.get('choices', [])
+            return random.choice(choices)
+            
+        else:
+            raise ValueError(f"Unsupported random distribution: {distribution}")
             
     def _generate_date(self, sim_config):
-        start = datetime.strptime(sim_config['range']['start'], '%Y-%m-%d')
-        end = datetime.strptime(sim_config['range']['end'], '%Y-%m-%d')
-        delta = (end - start).days
-        return (start + timedelta(days=random.randint(0, delta))).date()
+        params = sim_config.get('params', {})
+        start_date = params.get('start_date', '-1y')
+        end_date = params.get('end_date', 'now')
+        
+        return self.faker.date_time_between(start_date=start_date, end_date=end_date)
 
     def convert_list_of_dicts_to_tuples(self, data: List[Dict]) -> Dict[str, Iterable]:
         # Extract column names from the first dictionary
@@ -302,7 +339,7 @@ class DataSimulator:
         yield None  # Sentinel value to signal end of data
 # Usage Example
 if __name__ == "__main__":
-    simulator = DataSimulator('data_simulator/config/data_config.yaml')
+    simulator = DataSimulator("config/config.yaml")
 
     products = simulator.generate_data_parallel('products', 500)
     simulator.db.batch_insert('products', products)
