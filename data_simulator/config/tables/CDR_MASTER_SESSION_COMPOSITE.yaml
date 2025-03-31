@@ -71,5 +71,4 @@ columns:
 - PDD
 - CALLED_COUNTRY_CODE
 - CALLING_COUNTRY_CODE
-# primary_key: ''
 table_name: CDR_MASTER_SESSION_COMPOSITE

@@ -64,5 +64,4 @@ columns:
 - TUNNEL_ID_CONTROL_UPLINK
 - TUNNEL_ID_CONTROL_DOWNLINK
 - FRAMES_COUNT_SAVED
-# primary_key: ''
 table_name: CDR_GI

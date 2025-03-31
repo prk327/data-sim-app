@@ -2,11 +2,14 @@ columns:
   ACCESSIBILITY_KPI:
     field_name: Accessibility KPI
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   ACCESS_TYPE_NAME:
@@ -31,11 +34,14 @@ columns:
   ACCOUNTING_RECORD_TYPE:
     field_name: Accounting Record Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   ACCOUNT_SESSION_ID:
@@ -86,11 +92,14 @@ columns:
   AMF_UE_ID:
     field_name: AMF UE ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   AMF_UE_NGAP_ID_LIST:
@@ -134,21 +143,27 @@ columns:
   APN_AMBR_DL:
     field_name: APN AMBR DL
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   APN_AMBR_UL:
     field_name: APN AMBR UL
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   APN_LIST:
@@ -192,11 +207,14 @@ columns:
   APPLICATION_ID:
     field_name: Application ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   APPLICATION_INSTANCE_ID:
@@ -242,11 +260,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   AUTHENTICATE:
@@ -271,11 +290,14 @@ columns:
   AUTHENTICATION_CAUSE:
     field_name: Authentication Cause
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   AUTHENTICATION_CONTEXT:
@@ -319,11 +341,14 @@ columns:
   AUTH_APPLICATION_ID:
     field_name: Auth Application Id
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   AUTN:
@@ -348,21 +373,27 @@ columns:
   BEARER_ID:
     field_name: Bearer ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   BEARER_QCI:
     field_name: Bearer QCI
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   BEARER_QCI_LIST:
@@ -444,11 +475,14 @@ columns:
   BYE_COUNT:
     field_name: BYE Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CALLED_COUNTRY_CODE:
@@ -473,41 +507,53 @@ columns:
   CALLED_NATURE:
     field_name: Called Address Nature
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   CALLED_NUMBERING_PLAN:
     field_name: Called Numbering Plan
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CALLED_NUMBER_PRESENTATION:
     field_name: Called Number Presentation
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CALLED_NUM_OF_DIGITS:
     field_name: Called Num Of Digits
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   CALLED_PARTY:
@@ -551,11 +597,14 @@ columns:
   CALLED_SSN:
     field_name: Called SSN
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CALLED_STATION_ID:
@@ -599,41 +648,53 @@ columns:
   CALLING_NATURE:
     field_name: Calling Address Nature
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   CALLING_NUMBERING_PLAN:
     field_name: Calling Numbering Plan
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CALLING_NUMBER_PRESENTATION:
     field_name: Calling Number Presentation
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CALLING_NUM_OF_DIGITS:
     field_name: Calling Num Of Digits
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   CALLING_PARTY:
@@ -696,21 +757,27 @@ columns:
   CALLING_SSN:
     field_name: Calling SSN
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CALL_DURATION:
     field_name: Session Duration
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   CALL_ID:
@@ -773,11 +840,14 @@ columns:
   CANCEL_COUNT:
     field_name: CANCEL Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CARRIER_ID_CODE:
@@ -802,21 +872,27 @@ columns:
   CDR_ID:
     field_name: CDR ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   CELL_ID:
     field_name: Cell ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CELL_NAME:
@@ -879,11 +955,14 @@ columns:
   CGI_COUNT:
     field_name: CGI Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CGI_LIST:
@@ -908,11 +987,14 @@ columns:
   CHARGE:
     field_name: CHARGE
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   CHARGE_NUMBER:
@@ -1051,11 +1133,14 @@ columns:
   CHARGING_TYPE:
     field_name: Charging Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   CHARGING_TYPE_NAME:
@@ -1080,21 +1165,27 @@ columns:
   CIC:
     field_name: CIC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   CIPHERED_FRAMES:
     field_name: Ciphered Frames
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CIPHERING_KEY:
@@ -1119,11 +1210,14 @@ columns:
   CLASSIFICATION_TYPE:
     field_name: Classification Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CLASSMARK_2_HEX:
@@ -1167,11 +1261,14 @@ columns:
   COMMAND_CODE:
     field_name: Command Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CONNECTION_TIME:
@@ -1186,11 +1283,14 @@ columns:
   CONNECTION_TYPE:
     field_name: Connection Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   CONTRIBUTIONID:
@@ -1234,21 +1334,27 @@ columns:
   CONVERSION_AUTH_SESSION_STATE:
     field_name: Auth Session State
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CORRELATION_CALL_ID:
     field_name: Correlation Call ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CORRELATION_PROBE_IDS:
@@ -1311,11 +1417,14 @@ columns:
   CORRELATION_SESSION_ID:
     field_name: Correlation Session ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CORRELATION_SESSION_IDS:
@@ -1340,21 +1449,27 @@ columns:
   CORRELATION_USER_SESSION_ID:
     field_name: Correlation User Session ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   COUNTER:
     field_name: Counter Field
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   CPC:
@@ -1417,11 +1532,14 @@ columns:
   DECIPHERED_FRAMES:
     field_name: Deciphered Frames
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   DELIMITER:
@@ -1446,11 +1564,14 @@ columns:
   DEREGISTRATION_REASON_CODE:
     field_name: De Registration Reason Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   DEREGISTRATION_REASON_INFO:
@@ -1570,21 +1691,27 @@ columns:
   DEST_DSCP:
     field_name: Dest DSCP
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   DEST_INTERFACE:
     field_name: Destination Interface
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   DEST_IP:
@@ -1668,11 +1795,14 @@ columns:
   DIRECTION:
     field_name: Direction
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   DISCONNECTION_TIME:
@@ -1762,11 +1892,14 @@ columns:
   DPC_DECIMAL:
     field_name: DPC Decimal
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   DPC_SUBSRV:
@@ -1791,11 +1924,14 @@ columns:
   DRA_COUNT:
     field_name: DRA Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   DRA_IP_ADDRESS:
@@ -1808,41 +1944,53 @@ columns:
   DROP_CALL_COUNT:
     field_name: Drop Call Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   DROP_CAUSE:
     field_name: Drop Cause
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   DSCP:
     field_name: DSCP
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   DSLS:
     field_name: Destination SLS
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   DST_IMSI:
@@ -1877,11 +2025,14 @@ columns:
   DUPLICATE_MSG_COUNT:
     field_name: Duplicate MSG Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   EIR_NUMBER:
@@ -1925,31 +2076,40 @@ columns:
   ENB_UE_S1AP_ID:
     field_name: ENB UE S1AP ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   END_CAUSE:
     field_name: End Cause
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   END_CAUSE_FROM_JSON:
     field_name: End Cause from JSON
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   END_TIME:
@@ -2021,11 +2181,14 @@ columns:
   ESP_ENCRYPTED_ALGORITHM:
     field_name: ESP Encrypted Algorithm
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   EVENT_TRIGGER:
@@ -2050,41 +2213,53 @@ columns:
   EVENT_TYPE:
     field_name: Event Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   EXPIRY_TIME:
     field_name: Expiry Time
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   FAILED_AVP:
     field_name: Failed AVP
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FAILED_DECIPHERING_FRAMES:
     field_name: Failed Deciphering Frames
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FILTERED_DEST_IP:
@@ -2130,81 +2305,105 @@ columns:
   FIRST_CI:
     field_name: First CI
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FIRST_IU_PROCEDURE_TYPE:
     field_name: First IU Procedure Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FIRST_LAC:
     field_name: First LAC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FIRST_PROCEDURE_TYPE:
     field_name: First Procedure Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FIRST_SAC:
     field_name: First SAC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FIRST_TARGET_CELL_ID:
     field_name: First Target Cell ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FIRST_TARGET_C_ID:
     field_name: First Target C-ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FIRST_TARGET_RNC_ID:
     field_name: First Target RNC-ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FORWARDED_TO_NUMBER:
@@ -2238,21 +2437,25 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   FRAMES_COUNT_SAVED:
     field_name: Frames Count Saved
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FSEID_IP_1:
@@ -2293,41 +2496,53 @@ columns:
   FSEID_TEID_1:
     field_name: FSEID TEID 1
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FSEID_TEID_2:
     field_name: FSEID TEID 2
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FSEID_TEID_3:
     field_name: FSEID TEID 3
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FULL_CDR:
     field_name: Full CDR
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   FWD_CONTACT_URI_DOMAIN:
@@ -2371,21 +2586,27 @@ columns:
   GBR_QCI:
     field_name: GBR QCI
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   GENERIC_ADDRESS_NATURE:
     field_name: Generic Address Nature
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   GENERIC_NUMBER:
@@ -2522,11 +2743,14 @@ columns:
   GNB_UE_ID:
     field_name: GNB UE ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   GPSI:
@@ -2570,31 +2794,40 @@ columns:
   GSM_SMS_CP_CAUSE:
     field_name: GSM SMS CP Cause
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   GSM_SMS_RP_CAUSE:
     field_name: GSM SMS RP Cause
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   GSM_SMS_TP_CAUSE:
     field_name: GSM SMS TP Cause
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   GTP_INTERFACE_TYPE:
@@ -2619,41 +2852,53 @@ columns:
   GTP_TEID_DL:
     field_name: GTP TEID DL
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   GTP_TEID_DL_OLD:
     field_name: GTP TEID DL Old
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   GTP_TEID_UL:
     field_name: GTP TEID UL
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   GTP_TEID_UL_OLD:
     field_name: GTP TEID UL Old
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   GUTI:
@@ -2716,11 +2961,14 @@ columns:
   HANDOVER_COUNT:
     field_name: Handover Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   HANDOVER_INDICATION:
@@ -2755,41 +3003,53 @@ columns:
   HANDOVER_PERFORMED_COUNT:
     field_name: Handover Performed Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   HANDOVER_REFERENCE:
     field_name: Handover Reference
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   HANDOVER_RQD_COUNT:
     field_name: Handover Required Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   HANDOVER_TYPE:
     field_name: Handover Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   HLR_NUMBER:
@@ -2814,11 +3074,14 @@ columns:
   HOLD_CALL_COUNT:
     field_name: Hold Call Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   HOP_BY_HOP:
@@ -2862,71 +3125,92 @@ columns:
   HO_DRTION_FRST_TRGGR_TO_ACTION:
     field_name: Ho Duration First Trigger to Action
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   HO_DRTION_LST_TRGGR_TO_ACTION:
     field_name: Ho Duration Last Trigger to Action
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   HO_TO_PCI:
     field_name: Ho To PCI
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   HO_TRIGGER_COUNT:
     field_name: Ho Trigger Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   HPACK_FULLY_DECOMPRESSION:
     field_name: Hpack Fully Decompression Messages
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   HPACK_PARTIAL_DECOMPRESSION:
     field_name: Hpack Partial Decompression Messages
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   HPACK_TOTAL_DECOMPRESSION:
     field_name: Hpack Total Decompression Messages
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   HTTP2_END_CAUSE:
@@ -2951,11 +3235,14 @@ columns:
   HTTP_METHOD:
     field_name: HTTP Method
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   IMDN_MESSAGE:
@@ -3094,21 +3381,27 @@ columns:
   IMS_USER_STATE:
     field_name: IMS User State
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   INFO_COUNT:
     field_name: INFO Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   INTEGRITY_PROTECTION_KEY:
@@ -3133,11 +3426,14 @@ columns:
   INTERFACE:
     field_name: Interface Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   INTERFACE_NAME:
@@ -3181,11 +3477,14 @@ columns:
   INTERNAL_HANDOVER_RQD_COUNT:
     field_name: Internal Handover Required Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   INTERNET_LATENCY:
@@ -3193,31 +3492,38 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 99999999999.99
+        max: 1600.0
         mean: 1000.0
-        min: 0.01
+        median: 1000.0
+        min: 400.0
         precision: 2
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(13,2)
   IN_HOLD_CALL_COUNT:
     field_name: Total Hold Call Count In
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   IN_HOLD_CALL_DURATION:
     field_name: Total Hold Call Duration In
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   IN_JITTER_AVG:
@@ -3225,11 +3531,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   IN_MERGE_CACHE:
@@ -3246,11 +3553,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   IN_PMOS_AVG:
@@ -3258,11 +3566,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   IN_RTP_DEST_IP:
@@ -3320,41 +3629,53 @@ columns:
   IN_SSRC:
     field_name: SSRC In
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   IN_TOTAL_MUTE_COUNT:
     field_name: Total Mute Count In
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   IN_TOTAL_RTP_PACKETS:
     field_name: Total RTP Packets In
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   IP_CAN_TYPE:
     field_name: IP CAN Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   ISUP_ADDRESS_COMPLETE:
@@ -3478,11 +3799,14 @@ columns:
   ISUP_SERVICE_TYPE:
     field_name: Service Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   ISUP_SUSPEND:
@@ -3518,11 +3842,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 99999999999.99
+        max: 1600.0
         mean: 1000.0
-        min: 0.01
+        median: 1000.0
+        min: 400.0
         precision: 2
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(13,2)
   KASME:
@@ -3547,11 +3872,14 @@ columns:
   LAC:
     field_name: LAC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   LAST_CGI_TIMESTAMP:
@@ -3566,11 +3894,14 @@ columns:
   LAST_RESPONSE_CAUSE:
     field_name: Last Response Cause
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   LAST_VISITED_CGI:
@@ -3595,21 +3926,27 @@ columns:
   LCSAP_CORRELATION_ID:
     field_name: Lcsap Correlation id
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   LOCATION_REPORT_COUNT:
     field_name: Location Report Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   LOCATION_URI:
@@ -3653,11 +3990,14 @@ columns:
   MASTER_SESSION_TYPE:
     field_name: Master Session Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   MBMS_GW_NAME:
@@ -3696,11 +4036,14 @@ columns:
   MCC:
     field_name: MCC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   MCC_MNC:
@@ -3801,41 +4144,53 @@ columns:
   MC_SERVICE:
     field_name: MC Service
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   MEAN_THROUGHPUT_RECEIVED:
     field_name: Mean Throughput DL
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   MEAN_THROUGHPUT_SENT:
     field_name: Mean Throughput UL
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   MEASURING_PROBE_LOC_ID:
     field_name: MEASURING_PROBE_LOC_ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   MEASURING_PROBE_NAME:
@@ -3917,21 +4272,27 @@ columns:
   MEDIA_TYPE:
     field_name: Media Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   MENBTOSGNB_CAND_CELL_COUNT:
     field_name: MeNBToSgNB_CAND_Cell_COUNT
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   MENBTOSGNB_CAND_CELL_FREQ:
@@ -4023,11 +4384,14 @@ columns:
   MESSAGE_COUNT:
     field_name: MESSAGE Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   MME_NAME:
@@ -4052,21 +4416,27 @@ columns:
   MME_UE_S1AP_ID:
     field_name: MME UE S1AP ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   MNC:
     field_name: MNC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   MN_NAI:
@@ -4091,11 +4461,14 @@ columns:
   MOBILITY_KPI:
     field_name: Mobility KPI
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   MODEL:
@@ -4158,11 +4531,14 @@ columns:
   MSG_COUNT:
     field_name: MSG Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   MSISDN:
@@ -4187,11 +4563,14 @@ columns:
   MSU_COUNT:
     field_name: MSU Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   MS_IP_ADDRESS:
@@ -4339,11 +4718,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   NETWORK_NAME:
@@ -4487,21 +4867,27 @@ columns:
   NGAP_ENCRYPTED_ALGORITHM:
     field_name: NGAP Encrypted Algorithm
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   NGAP_END_CAUSE:
     field_name: NGAP End Cause
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   NGAP_PROCEDURES_LIST:
@@ -4661,11 +5047,14 @@ columns:
   NON_GPRS_DETACH_TYPE:
     field_name: Non GPRS Detach Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   NOTIFICATION_URI:
@@ -4690,21 +5079,27 @@ columns:
   NOTIFY_COUNT:
     field_name: NOTIFY Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   NOTIF_EFF:
     field_name: Notif Eff
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   NSSAI:
@@ -4767,11 +5162,14 @@ columns:
   NSSAI_SST:
     field_name: NSSAI_SST
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   NSSAI_SST_LIST:
@@ -4796,81 +5194,105 @@ columns:
   NUMBER_OF_REQUESTS:
     field_name: Number of Requests
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   NUMBER_OF_RESPONSES:
     field_name: Number of Responses
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   NUM_OF_COMPLETED_HOPS:
     field_name: Number of Completed Hops
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   NUM_OF_HOPS:
     field_name: Number of Hops
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   NUM_OF_RETRANSMISSION_FRAMES:
     field_name: Number of Retransmission frames
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   NUM_OF_TRANSACTIONS:
     field_name: NUM_OF_TRANSACTIONS
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   OCTETS_COUNT:
     field_name: Octets Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   OFFENDING_IE:
     field_name: Offending IE
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   OLD_GUTI:
@@ -4895,21 +5317,27 @@ columns:
   OLD_LAC:
     field_name: Old LAC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   OLD_RAC:
     field_name: Old RAC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   OPC:
@@ -4934,11 +5362,14 @@ columns:
   OPC_DECIMAL:
     field_name: OPC Decimal
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   OPC_SUBSRV:
@@ -4982,31 +5413,40 @@ columns:
   OPTIONS_COUNT:
     field_name: OPTIONS Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   ORG_REDIRECT_REASON:
     field_name: Original Redirect Reason
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   ORIGINAL_ADDRESS_NATURE:
     field_name: Original Address Nature
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   ORIGINAL_CALLED_NUMBER:
@@ -5171,11 +5611,14 @@ columns:
   ORIGIN_STATE_ID:
     field_name: Origin State Id
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   ORIG_CALL_BACK_REF:
@@ -5240,11 +5683,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   ORIG_SETUP_TIME:
@@ -5252,11 +5696,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   ORIG_SIP_REASON:
@@ -5281,31 +5726,40 @@ columns:
   OSLS:
     field_name: Originating SLS
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   OUT_HOLD_CALL_COUNT:
     field_name: Total Hold Call Count Out
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   OUT_HOLD_CALL_DURATION:
     field_name: Total Hold Call Duration Out
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   OUT_JITTER_AVG:
@@ -5313,11 +5767,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   OUT_MERGE_CACHE:
@@ -5334,11 +5789,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   OUT_PMOS_AVG:
@@ -5346,11 +5802,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   OUT_RTP_DEST_IP:
@@ -5382,31 +5839,40 @@ columns:
   OUT_SSRC:
     field_name: SSRC Out
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   OUT_TOTAL_MUTE_COUNT:
     field_name: Total Mute Count Out
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   OUT_TOTAL_RTP_PACKETS:
     field_name: Total RTP Packets Out
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   PACKET_LOSS_RATE:
@@ -5414,51 +5880,64 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   PAGING_BULK_COUNT:
     field_name: Paging Bulk Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   PAGING_DURATION:
     field_name: Paging Duration
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   PAGING_MESSAGE_COUNT:
     field_name: PAGING_MESSAGE_COUNT
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   PAGING_PROCESS_DURATION:
     field_name: Paging Process Duration
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   PASSERTED:
@@ -5504,11 +5983,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 99999999999.99
+        max: 1600.0
         mean: 1000.0
-        min: 0.01
+        median: 1000.0
+        min: 400.0
         precision: 2
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(13,2)
   PDD:
@@ -5516,11 +5996,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   PGAD:
@@ -5528,11 +6009,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 99999999999.99
+        max: 1600.0
         mean: 1000.0
-        min: 0.01
+        median: 1000.0
+        min: 400.0
         precision: 2
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(13,2)
   PGW_NAME_SIGNALING:
@@ -5576,11 +6058,14 @@ columns:
   PLMN_IDENTITY:
     field_name: PLMN Identity
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   PMOS_RFACTOR_AVG:
@@ -5588,21 +6073,25 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 99999999999.99
+        max: 1600.0
         mean: 1000.0
-        min: 0.01
+        median: 1000.0
+        min: 400.0
         precision: 2
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(13,2)
   PRACK_COUNT:
     field_name: PRACK Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   PREFERED_CGI_LIST:
@@ -5627,71 +6116,92 @@ columns:
   PRESENTATION_ALLOWED:
     field_name: Presentation Allowed
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   PROBE_CORRELATION_ID:
     field_name: Probe Correlation id
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   PROBE_GROUP_ID:
     field_name: Probe Group ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   PROBE_ID:
     field_name: Probe Id
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   PROCEDURE_CODE:
     field_name: Procedure Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   PROCEDURE_COMPLETION:
     field_name: Procedure Completion
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   PROCEDURE_DURATION:
     field_name: Procedure Duration
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   PROCEDURE_SUBTYPE:
@@ -5716,11 +6226,14 @@ columns:
   PROCEDURE_TYPE:
     field_name: Procedure Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   PROTOCOL:
@@ -5745,11 +6258,14 @@ columns:
   PSI_ACTIVATION:
     field_name: PSI Activation
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   PUBLIC_IDENTITY:
@@ -5774,11 +6290,14 @@ columns:
   PUBLISH_COUNT:
     field_name: PUBLISH Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   P_ACCESS_NETWORK_INFO:
@@ -5860,11 +6379,14 @@ columns:
   QER_CORRELATION_ID:
     field_name: QER Correlation ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   QMANAGER_TIME_STAMP:
@@ -5907,11 +6429,14 @@ columns:
   RAC:
     field_name: RAC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   RAI:
@@ -5957,11 +6482,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 99999999999.99
+        max: 1600.0
         mean: 1000.0
-        min: 0.01
+        median: 1000.0
+        min: 400.0
         precision: 2
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(13,2)
   RAN_PROBE_IP:
@@ -6024,11 +6550,14 @@ columns:
   RAT_TYPE:
     field_name: RAT Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   RAT_TYPE_LIST:
@@ -6072,11 +6601,14 @@ columns:
   RECORD_DURATION:
     field_name: Record Duration
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   REDIRECTING_NUMBER:
@@ -6120,11 +6652,14 @@ columns:
   REDIRECTION_IND:
     field_name: Redirection Indicator
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   REDIRECTION_NUMBER:
@@ -6149,81 +6684,105 @@ columns:
   REDIRECT_REASON:
     field_name: Redirect Reason
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   REFER_COUNT:
     field_name: REFER Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   REGISTER_COUNT:
     field_name: REGISTER Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   REGISTRATION_TYPE:
     field_name: Registration Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   REG_TYPE_5GS:
     field_name: 5GS Registration Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   REINVITE_COUNT:
     field_name: RE-INVITE Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   RELEASED_BY:
     field_name: Released by
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   RELEASE_CAUSE:
     field_name: Release Cause
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   RELEASE_DIRECTION:
@@ -6248,61 +6807,79 @@ columns:
   RELEASE_LOCATION:
     field_name: Release Location
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   RELOCATION_REQUIRED_COUNT:
     field_name: Relocation Required Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   RELOCATION_TYPE:
     field_name: Relocation type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   REQUEST_NUMBER:
     field_name: Request Number
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   REQUEST_TYPE:
     field_name: Request Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   REQUIRED_TARGET_CELL_ID:
     field_name: Required Target Cell ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   REQUIRED_TARGET_CGI:
@@ -6327,21 +6904,27 @@ columns:
   REQUIRED_TARGET_C_ID:
     field_name: Required Target C-ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   REQUIRED_TARGET_RNC_ID:
     field_name: Required Target RNC-ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   REROUTING_NUMBER:
@@ -6385,11 +6968,14 @@ columns:
   RESOURCE:
     field_name: Resource
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   RESOURCE_ID:
@@ -6433,11 +7019,14 @@ columns:
   RETAINABILITY_KPI:
     field_name: Retainability KPI
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   REVOKE_TYPE:
@@ -6528,11 +7117,14 @@ columns:
   ROAMING_STATUS:
     field_name: Roaming Status
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   RRC_ESTABLISHMENT_CAUSE:
@@ -6659,11 +7251,14 @@ columns:
   S1AP_ENCRYPTED_ALGORITHM:
     field_name: S1AP Encrypted Algorithm
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   S1AP_PROCEDURES_LIST:
@@ -6688,11 +7283,14 @@ columns:
   SAC:
     field_name: SAC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SCCP_CALLED_NUMBER:
@@ -6793,21 +7391,27 @@ columns:
   SEID_CP:
     field_name: SEID CP
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   SEID_UP:
     field_name: SEID UP
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   SENT_INITIAL_CDR:
@@ -6823,61 +7427,79 @@ columns:
   SEQ_NO:
     field_name: Sequence Number
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SERIAL_NUMBER:
     field_name: Serial Number
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SERVER_ASSIGNMENT_TYPE:
     field_name: Server Assignment Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SERVER_AUTHORIZATION_TYPE:
     field_name: Server Authorization Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SERVICE:
     field_name: Service
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   SERVICE_5G:
     field_name: 5G Service
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   SERVICE_5G_NAME:
@@ -6921,31 +7543,40 @@ columns:
   SERVICE_KEY:
     field_name: Service Key
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SERVICE_LEVEL_TRACE_INFO:
     field_name: Service Level Trace Info
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SERVICE_OPERATION:
     field_name: Service Operation
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SERVICE_OPERATION_NAME:
@@ -6970,21 +7601,27 @@ columns:
   SERVICE_PORT:
     field_name: Service Port
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SERVICE_SOURCE_PORT:
     field_name: Service Source Port
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SERVING_CELL_RSRP_DBM:
@@ -6992,11 +7629,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 99999999999.99
+        max: 1600.0
         mean: 1000.0
-        min: 0.01
+        median: 1000.0
+        min: 400.0
         precision: 2
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(13,2)
   SERVING_CELL_RSRQ_DB:
@@ -7004,11 +7642,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 99999999999.99
+        max: 1600.0
         mean: 1000.0
-        min: 0.01
+        median: 1000.0
+        min: 400.0
         precision: 2
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(13,2)
   SERVING_CGI:
@@ -7033,101 +7672,131 @@ columns:
   SERVING_CI:
     field_name: Serving CI
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SERVING_LAC:
     field_name: Serving LAC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SERVING_PLMN_ID:
     field_name: Serving PLMN-ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SERVING_SAC:
     field_name: Serving SAC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SERV_PRO_CORRELATION_ID:
     field_name: Service Profile Corr ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   SESSION_ID:
     field_name: Session ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   SESSION_ID_OLD:
     field_name: Session_ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SESSION_RELEASE_CAUSE:
     field_name: Session Release Cause
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SETUP_CAUSE:
     field_name: Setup Cause
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SETUP_INVITE_COUNT:
     field_name: SETUP-INVITE Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SETUP_TIME:
@@ -7135,11 +7804,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   SGNBINITSGNBMOD_REASON:
@@ -7183,41 +7853,53 @@ columns:
   SGNBTOMENB_SERVING_BAND_NR:
     field_name: SgNBtoMeNB_Serving_band_NR
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SGNBTOMENB_SERVING_CBW:
     field_name: SgNBtoMeNB_Serving_CBW
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SGNBTOMENB_SERVING_FREQ_NR:
     field_name: SgNBToMeNB_Serving_FREQ_NR
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SGNBTOMENB_SERVING_PCI:
     field_name: SgNBtoMeNB_Serving_PCI
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SGNB_ADDITION_REJECT_CAUSE:
@@ -7420,81 +8102,105 @@ columns:
   SIP_1XX_COUNT:
     field_name: SIP 1XX Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_2XX_COUNT:
     field_name: SIP 2XX Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_3XX_COUNT:
     field_name: SIP 3XX Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_4XX_COUNT:
     field_name: SIP 4XX Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_5XX_COUNT:
     field_name: SIP 5XX Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_6XX_COUNT:
     field_name: SIP 6XX Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_BYE_RESPONSE_CODE:
     field_name: SIP BYE Response Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_CANCEL_RESPONSE_CODE:
     field_name: SIP CANCEL Response Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_EVENT_HEADER:
@@ -7519,61 +8225,79 @@ columns:
   SIP_INFO_RESPONSE_CODE:
     field_name: SIP INFO Response Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_MESSAGE_RESPONSE_CODE:
     field_name: SIP MESSAGE Response Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_NOTIFY_RESPONSE_CODE:
     field_name: SIP NOTIFY Response Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_OPTIONS_RESPONSE_CODE:
     field_name: SIP OPTIONS Response Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_PRACK_RESPONSE_CODE:
     field_name: SIP PRACK Response Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_PUBLISH_RESPONSE_CODE:
     field_name: SIP PUBLISH Response Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_REASON:
@@ -7636,36 +8360,54 @@ columns:
   SIP_REFER_RESPONSE_CODE:
     field_name: SIP REFER Response Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_REGISTER_RESPONSE_CODE:
     field_name: SIP REGISTER Response Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_REINVITE_RESPONSE_CODE:
     field_name: SIP REINVITE Response Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_RELEASE_CAUSE:
     field_name: SIP Release Cause
-    simulation: {}
+    simulation:
+      distribution: normal
+      params:
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
+        precision: 0
+        std_dev: 10000
+      type: random
     type: varchar(200)
   SIP_RESPONSE_CODES:
     field_name: SIP Response Codes
@@ -7708,31 +8450,40 @@ columns:
   SIP_SETUP_INVITE_RESPONSE_CODE:
     field_name: SIP SETUP INVITE Response Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_SUBSCRIBE_RESPONSE_CODE:
     field_name: SIP SUBSCRIBE Response Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SIP_UPDATE_RESPONSE_CODE:
     field_name: SIP UPDATE Response Code
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SOURCE_ALIAS_FULL:
@@ -7809,11 +8560,14 @@ columns:
   SOURCE_LAC:
     field_name: Source LAC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SOURCE_MASK_IP:
@@ -7864,31 +8618,40 @@ columns:
   SOURCE_PLMN_ID:
     field_name: Source PLMN-ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SOURCE_RNC_ID:
     field_name: Source RNC ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SOURCE_SAC:
     field_name: Source SAC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SOURCE_UE_ID_LIST:
@@ -7939,12 +8702,12 @@ columns:
       type: faker
     type: TIMESTAMP
   START_HOUR:
-    field_name: Start Hour
+    field_name: Start Time
     simulation:
       method: date_time_between
       params:
         end_date: now
-        start_date: -5m
+        start_date: -1440m
       type: faker
     type: TIMESTAMP
   STMSI:
@@ -7988,11 +8751,14 @@ columns:
   STREAM_ID:
     field_name: Stream ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SUBSCRIBER_IP_PORT:
@@ -8017,11 +8783,14 @@ columns:
   SUBSCRIBE_COUNT:
     field_name: SUBSCRIBE Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SUBSCRIPTION_ID:
@@ -8046,21 +8815,27 @@ columns:
   SUBS_REQ_TYPE:
     field_name: Subs Req Type
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   SUB_SERVICE_INDICATOR:
     field_name: SubService indicator
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   SUCI:
@@ -8142,61 +8917,79 @@ columns:
   TAI_TAC:
     field_name: TAI TAC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TAI_TAC_COUNT:
     field_name: TAI TAC Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TARGET_CELL_ID:
     field_name: Target Cell ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TARGET_C_ID:
     field_name: Target C-ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TARGET_LAC:
     field_name: Target LAC
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TARGET_RNC_ID:
     field_name: Target RNC-ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TCAP_SESSION_ERROR_CODES:
@@ -8223,11 +9016,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   TCP_RETRNSMT_BYTES_RATIO_UL:
@@ -8235,11 +9029,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   TDF_APPLICATION_ID:
@@ -8328,11 +9123,14 @@ columns:
   TERMINATION_CAUSE:
     field_name: Termination Cause
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TERM_ACCESS_TYPE_NAME:
@@ -8378,11 +9176,12 @@ columns:
     simulation:
       distribution: normal
       params:
-        max: 999999999999.999
+        max: 1600.0
         mean: 1000.0
-        min: 0.001
+        median: 1000.0
+        min: 400.0
         precision: 3
-        std_dev: 500.0
+        std_dev: 200.0
       type: random
     type: numeric(14,3)
   TERM_P_ACCESS_NETWORK_INFO:
@@ -8426,11 +9225,14 @@ columns:
   TERM_ROAMING_STATUS:
     field_name: Term Roaming Status
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   TERM_SIP_REASON:
@@ -8483,11 +9285,14 @@ columns:
   TMGI:
     field_name: TMGI
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   TMGI_HEX:
@@ -8531,141 +9336,183 @@ columns:
   TOTAL_ANSWERED_CALL:
     field_name: Answered Calls
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   TOTAL_BYTES_RECEIVED_BY_MS:
     field_name: Total Data DL
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   TOTAL_BYTES_SEND_BY_MS:
     field_name: Total Data UL
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   TOTAL_CALL_ATTEMPTS:
     field_name: Call Attempts
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   TOTAL_DL_FRAMES:
     field_name: Total DL Frames
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TOTAL_DL_RAW_BYTES:
     field_name: Total DL Raw Bytes
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   TOTAL_DL_SIGNALING_BYTES:
     field_name: Total Signaling DL
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TOTAL_NAS:
     field_name: Total Nas
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TOTAL_NAS_DECODED:
     field_name: Total Nas Decoded
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TOTAL_RTP_ONE_WAY_COUNT:
     field_name: Total RTP One Way Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TOTAL_SUCCESS_CALL:
     field_name: Completed Calls
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   TOTAL_UL_FRAMES:
     field_name: Total UL Frames
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TOTAL_UL_RAW_BYTES:
     field_name: Total UL Raw Bytes
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   TOTAL_UL_SIGNALING_BYTES:
     field_name: Total Signaling UL
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TRANSPORT_LAYER_ADDRESS_DL:
@@ -8685,11 +9532,14 @@ columns:
   TRANSPORT_LAYER_PROTOCOL:
     field_name: Transport Layer Protocol
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   TRANSPORT_LAYER_PROTOCOL_LIST:
@@ -8714,61 +9564,79 @@ columns:
   TUNNEL_ID_CONTROL_DOWNLINK:
     field_name: Tunnel id for control downlink
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   TUNNEL_ID_CONTROL_UPLINK:
     field_name: Tunnel id for control uplink
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   TUNNEL_ID_DATA_DOWNLINK:
     field_name: Tunnel id for data downlink
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   TUNNEL_ID_DATA_UPLINK:
     field_name: Tunnel id for data uplink
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   UNIQUE_CDR_ID:
     field_name: Unique Cdr Id
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999999999999
-        min: 0
+        max: 800000
+        mean: 500000
+        median: 500000
+        min: 200000
         precision: 0
+        std_dev: 100000
       type: random
     type: numeric(20,0)
   UPDATE_COUNT:
     field_name: UPDATE Count
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   UP_IP_RESOURCE_INF_IP_ADDR:
@@ -8781,11 +9649,14 @@ columns:
   UP_IP_RESOURCE_INF_TEID:
     field_name: User Plane IP Resource Information TEID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   URI:
@@ -8886,11 +9757,14 @@ columns:
   USER_STATE:
     field_name: User State
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   USSD_STRING:
@@ -8915,11 +9789,14 @@ columns:
   VARIANT:
     field_name: Variant
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 9999
-        min: 0
+        max: 8000
+        mean: 5000
+        median: 5000
+        min: 2000
         precision: 0
+        std_dev: 1000
       type: random
     type: numeric(4,0)
   VCU_IP:
@@ -8932,11 +9809,14 @@ columns:
   VLAN_ID:
     field_name: VLAN ID
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   VLAN_ID_LIST:
@@ -9037,11 +9917,14 @@ columns:
   X2_HDR_ENB_S1AP_ID:
     field_name: x2_hdr_enb_s1ap_id
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_HDR_FULL_GUMMEI:
@@ -9066,11 +9949,14 @@ columns:
   X2_HDR_MME_S1AP_ID:
     field_name: x2_hdr_mme_s1ap_id
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_HDR_SOURCE_ECGI:
@@ -9152,61 +10038,79 @@ columns:
   X2_REQACK_MCI_CRR_BDW:
     field_name: x2_reqack_mci_crr_bdw
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_REQACK_MCI_CRR_DL_FREQ:
     field_name: x2_reqack_mci_crr_dl_freq
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_REQACK_MCI_CRR_UL_FREQ:
     field_name: x2_reqack_mci_crr_ul_freq
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_REQACK_MCI_T304:
     field_name: x2_reqack_mci_t304
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_REQACK_MCI_TARGET_PCI:
     field_name: x2_reqack_mci_target_pci
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_REQACK_NEW_X2AP_ID:
     field_name: x2_reqack_new_x2ap_id
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_REQACK_ST_TR_ERAB_ID:
@@ -9250,11 +10154,14 @@ columns:
   X2_REQ_ERAB_LEVEL_QOS_QCI:
     field_name: x2_req_erab_level_qos_qci
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_REQ_ERAB_TOBESETUP_ID:
@@ -9355,11 +10262,14 @@ columns:
   X2_REQ_OLD_X2AP_ID:
     field_name: x2_req_old_x2ap_id
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_REQ_UE_SECURITY_CAP:
@@ -9384,21 +10294,27 @@ columns:
   X2_RLS_CONT_NEW_X2AP_ID:
     field_name: x2_rls_cont_new_x2ap_id
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_RLS_CONT_OLD_X2AP_ID:
     field_name: x2_rls_cont_old_x2ap_id
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_SGNBTOMENB_GNB_NCGI:
@@ -9442,51 +10358,66 @@ columns:
   X2_ST_TR_NEW_X2AP_ID:
     field_name: x2_st_tr_new_x2ap_id
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_ST_TR_OLD_X2AP_ID:
     field_name: x2_st_tr_old_x2ap_id
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_TIME_DURATION_TOTAL:
     field_name: x2_time_Duration_Total
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_TIME_DUR_REQ_TO_RESP:
     field_name: x2_time_Dur_Req_to_Resp
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X2_TIME_DUR_REQ_TO_TRAN:
     field_name: x2_time_Dur_Req_to_Tran
     simulation:
-      distribution: uniform
+      distribution: normal
       params:
-        max: 99999999999
-        min: 0
+        max: 80000
+        mean: 50000
+        median: 50000
+        min: 20000
         precision: 0
+        std_dev: 10000
       type: random
     type: numeric(11,0)
   X_ENVOY_PEER_METADATA_ID:

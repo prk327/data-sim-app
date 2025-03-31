@@ -58,5 +58,4 @@ columns:
 - SOURCE_NE_NAME
 - DEST_NE_NAME
 - FRAMES_COUNT_SAVED
-# primary_key: SESSION_ID_OLD
 table_name: CDR_CN

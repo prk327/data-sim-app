@@ -49,5 +49,4 @@ columns:
 - UNIQUE_CDR_ID
 - VLAN_ID
 - FRAMES_COUNT_SAVED
-# primary_key: ''
 table_name: CDR_PFCP

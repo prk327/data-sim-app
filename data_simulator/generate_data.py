@@ -218,7 +218,7 @@ class DataSimulator:
         sim_config = col_config.get('simulation', {})
         
         if not sim_config:
-            raise ValueError("No simulation configuration found for the column.")
+            raise ValueError(f"No simulation configuration found for the column: {col_config['field_name']}")
 
         sim_type = sim_config.get('type')
         
@@ -289,10 +289,19 @@ class DataSimulator:
         if distribution == 'normal':
             mean = params.get('mean', 0)
             std_dev = params.get('std_dev', 1)
-            value = random.normalvariate(mean, std_dev)
-            # Clip to min and max if provided
-            if 'min' in params and 'max' in params:
-                value = max(params['min'], min(params['max'], value))
+            min_val = params.get('min', float('-inf'))
+            max_val = params.get('max', float('inf'))
+            
+            # Generate values until we get one within bounds (with max attempts to prevent infinite loops)
+            max_attempts = 100
+            for _ in range(max_attempts):
+                value = random.normalvariate(mean, std_dev)
+                if min_val <= value <= max_val:
+                    break
+            else:
+                # If we can't get a value within bounds after max attempts, clip to nearest bound
+                value = max(min_val, min(max_val, mean))
+            
             # Round to precision if provided
             precision = params.get('precision')
             if precision is not None:

@@ -72,5 +72,4 @@ columns:
 - VLAN_ID
 - RAT_TYPE_LIST
 - FRAMES_COUNT_SAVED
-# primary_key: ''
 table_name: CDR_S1AP

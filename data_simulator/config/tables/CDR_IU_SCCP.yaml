@@ -76,5 +76,4 @@ columns:
 - TAC_CATEGORY
 - FRAMES_COUNT_SAVED
 - START_HOUR
-# primary_key: ''
 table_name: CDR_IU_SCCP

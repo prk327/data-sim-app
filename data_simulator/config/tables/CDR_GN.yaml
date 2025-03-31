@@ -65,5 +65,4 @@ columns:
 - MBMS_MULTICAST_SRC_IP_ADDR
 - TMGI_HEX
 - FRAMES_COUNT_SAVED
-# primary_key: ''
 table_name: CDR_GN

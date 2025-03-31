@@ -82,5 +82,4 @@ columns:
 - TIME_ON_LAST_CELLS
 - NSSAI
 - UNIQUE_CDR_ID
-# primary_key: ''
 table_name: CDR_RRC_X2_LTE
