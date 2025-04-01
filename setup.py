@@ -11,7 +11,8 @@ setup(
         'faker',
         'vertica-python',
         'PyYAML',
-        'Jinja2'
+        'Jinja2',
+        'tqdm'
     ],
     classifiers=[
         'Programming Language :: Python :: 3',
