@@ -45,7 +45,8 @@ class VerticaDB:
             port=self.config['port'],
             user=self.config['user'],
             password=self.config['password'],
-            database=self.config['database']
+            database=self.config['database'],
+            tlsmode='disable'
         )
 
     def _init_pool(self):

@@ -1,12 +1,13 @@
 vertica:
   host: "host.docker.internal"  # to connect to host from wsl use "host.docker.internal"
   port: 5433
-  user: "myuser"
-  password: "admin12345"
+  user: "mydatabase"
+  password: "admin1234"
   database: "vdb"
   pool_size: 5
   schema: "omniq"
 
+# configure the tables for which data needs to be simulated
 tables:
   - CDR_GN
   - CDR_S1AP
@@ -26,8 +27,21 @@ tables:
   - CDR_PFCP
   - CDR_MASTER_SESSION_COMPOSITE
 
-generate_rows: 1
+# configure how many rows needs to be geretated based on each cron schedule
+generate_rows: 1000
 
+# cron tab scheduler
+              # ┌───────────── minute (0 - 59)
+              # │ ┌───────────── hour (0 - 23)
+              # │ │ ┌───────────── day of month (1 - 31)
+              # │ │ │ ┌───────────── month (1 - 12)
+              # │ │ │ │ ┌───────────── day of week (0 - 6) (Sunday=0)
+              # │ │ │ │ │
+              # * * * * *
+cron_schedule: "*/5 * * * *"  # Example: Run every 5 minutes.
+
+
+# confure the data types as found in fields.xml to map it to relevant vertica data types
 type_mapping:
   Float: numeric(13,2)
   Integer: numeric(11,0)
@@ -44,6 +58,7 @@ type_mapping:
   Boolean: BOOLEAN
   "EDR Start Time": TIMESTAMP
 
+# configure the data simulation strategy based on python library facker
 simulation_config:
   numeric(13,2):  # Float
     type: random
@@ -141,16 +156,6 @@ simulation_config:
     distribution: choice
     params:
       choices: [True, False]
-
-              # ┌───────────── minute (0 - 59)
-              # │ ┌───────────── hour (0 - 23)
-              # │ │ ┌───────────── day of month (1 - 31)
-              # │ │ │ ┌───────────── month (1 - 12)
-              # │ │ │ │ ┌───────────── day of week (0 - 6) (Sunday=0)
-              # │ │ │ │ │
-              # * * * * * /usr/local/bin/python /app/your_script.py >> /var/log/cron.log 2>&1
-
-cron_schedule: "*/5 * * * *"  # Example: Run every 5 minutes.
 
 
 xml_path:
