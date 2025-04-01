@@ -1,0 +1,121 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "data-simulator.fullname" . }}
+  labels:
+    {{- include "data-simulator.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.app.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "data-simulator.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "data-simulator.selectorLabels" . | nindent 8 }}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "data-simulator.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.app.image.repository }}:{{ .Values.app.image.tag }}"
+          imagePullPolicy: {{ .Values.app.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          env:
+            {{- range $key, $value := .Values.app.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config
+              readOnly: true
+            {{- if .Values.storage.config.enabled }}
+            - name: dynamic-config
+              mountPath: {{ .Values.storage.config.mountPath }}
+              {{- if .Values.storage.config.subPath }}
+              subPath: {{ .Values.storage.config.subPath }}
+              {{- end }}
+            {{- end }}
+            {{- if .Values.storage.columns.enabled }}
+            - name: columns-config
+              mountPath: {{ .Values.storage.columns.mountPath }}
+            {{- end }}
+            {{- if .Values.storage.tables.enabled }}
+            - name: tables-config
+              mountPath: {{ .Values.storage.tables.mountPath }}
+            {{- end }}
+          resources:
+            {{- toYaml .Values.app.resources | nindent 12 }}
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ include "data-simulator.fullname" . }}-config
+        {{- if and .Values.storage.config.enabled (not .Values.storage.useHostPath) (not .Values.storage.config.existingClaim) }}
+        - name: dynamic-config
+          persistentVolumeClaim:
+            claimName: {{ include "data-simulator.fullname" . }}-config
+        {{- end }}
+        {{- if and .Values.storage.config.enabled .Values.storage.config.existingClaim }}
+        - name: dynamic-config
+          persistentVolumeClaim:
+            claimName: {{ .Values.storage.config.existingClaim }}
+        {{- end }}
+        {{- if and .Values.storage.columns.enabled (not .Values.storage.useHostPath) (not .Values.storage.columns.existingClaim) }}
+        - name: columns-config
+          persistentVolumeClaim:
+            claimName: {{ include "data-simulator.fullname" . }}-columns
+        {{- end }}
+        {{- if and .Values.storage.columns.enabled .Values.storage.columns.existingClaim }}
+        - name: columns-config
+          persistentVolumeClaim:
+            claimName: {{ .Values.storage.columns.existingClaim }}
+        {{- end }}
+        {{- if and .Values.storage.tables.enabled (not .Values.storage.useHostPath) (not .Values.storage.tables.existingClaim) }}
+        - name: tables-config
+          persistentVolumeClaim:
+            claimName: {{ include "data-simulator.fullname" . }}-tables
+        {{- end }}
+        {{- if and .Values.storage.tables.enabled .Values.storage.tables.existingClaim }}
+        - name: tables-config
+          persistentVolumeClaim:
+            claimName: {{ .Values.storage.tables.existingClaim }}
+        {{- end }}
+        {{- if .Values.storage.useHostPath }}
+        - name: dynamic-config
+          hostPath:
+            path: {{ printf "%s/config.yaml" .Values.storage.hostPath.basePath }}
+            type: File
+        - name: columns-config
+          hostPath:
+            path: {{ printf "%s/columns" .Values.storage.hostPath.basePath }}
+            type: Directory
+        - name: tables-config
+          hostPath:
+            path: {{ printf "%s/tables" .Values.storage.hostPath.basePath }}
+            type: Directory
+        {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

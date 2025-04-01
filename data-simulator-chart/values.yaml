@@ -1,0 +1,241 @@
+# Default values for data-simulator
+
+# Application Configuration
+app:
+  name: data-simulator
+  image:
+    repository: your-registry/data-simulator
+    tag: latest
+    pullPolicy: IfNotPresent
+  replicaCount: 1
+  env:
+    PYTHONUNBUFFERED: "1"
+    TQDM_MININTERVAL: "5"
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 512Mi
+    requests:
+      cpu: 500m
+      memory: 256Mi
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+# Vertica Configuration
+vertica:
+  host: "host.docker.internal"
+  port: 5433
+  user: "mydatabase"
+  password: "admin1234"
+  database: "vdb"
+  pool_size: 5
+  schema: "omniq"
+
+# Data Generation Configuration
+# configure the tables for which data needs to be simulated
+tables:
+  - CDR_GN
+  - CDR_S1AP
+  - CDR_HPA_DIAMETER
+  - CDR_HPA_SIP
+  - CDR_SGS
+  - CDR_CN
+  - CDR_CN_ISUP
+  - CDR_CN_BICC
+  - CDR_IU_SCCP
+  - CDR_NGAP
+  - CDR_GI
+  - CDR_DNS
+  - CDR_SIP_REG
+  - CDR_HTTP2
+  - CDR_RRC_X2_LTE
+  - CDR_PFCP
+  - CDR_MASTER_SESSION_COMPOSITE
+
+# configure how many rows needs to be geretated based on each cron schedule
+generate_rows: 1000
+
+# cron tab scheduler
+              # ┌───────────── minute (0 - 59)
+              # │ ┌───────────── hour (0 - 23)
+              # │ │ ┌───────────── day of month (1 - 31)
+              # │ │ │ ┌───────────── month (1 - 12)
+              # │ │ │ │ ┌───────────── day of week (0 - 6) (Sunday=0)
+              # │ │ │ │ │
+              # * * * * *
+cron_schedule: "*/5 * * * *"  # Example: Run every 5 minutes.
+
+# confure the data types as found in fields.xml to map it to relevant vertica data types
+type_mapping:
+  Float: numeric(13,2)
+  Integer: numeric(11,0)
+  Double: numeric(14,3)
+  String: varchar(50)
+  Long: numeric(20,0)
+  IP: varchar(150)
+  Binary: BINARY
+  Short: numeric(4,0)
+  "Time Stamp": TIMESTAMP
+  Date: TIMESTAMP
+  "Custom Field Item": varchar(50)
+  BigDouble: numeric(16,2)
+  Boolean: BOOLEAN
+  "EDR Start Time": TIMESTAMP
+
+# configure the data simulation strategy based on python library facker
+simulation_config:
+  numeric(13,2):  # Float
+    type: random
+    distribution: normal
+    params:
+      mean: 1000.0
+      median: 1000.0
+      std_dev: 200.0
+      max: 1600.0  # mean + 3*std_dev
+      min: 400.0   # mean - 3*std_dev
+      precision: 2
+
+  numeric(11,0):  # Integer
+    type: random
+    distribution: normal
+    params:
+      mean: 50000
+      median: 50000
+      std_dev: 10000
+      max: 80000   # mean + 3*std_dev
+      min: 20000   # mean - 3*std_dev
+      precision: 0
+
+  numeric(14,3):  # Double
+    type: random
+    distribution: normal
+    params:
+      mean: 1000.0
+      median: 1000.0
+      std_dev: 200.0
+      max: 1600.0  # mean + 3*std_dev
+      min: 400.0   # mean - 3*std_dev
+      precision: 3
+
+  varchar(50):  # String
+    type: faker
+    provider: word
+    method: words
+    params:
+      ext_word_list: ["call", "sms", "data", "roaming", "voice", "mms", "location", "device", "network", "subscription"]
+
+  numeric(20,0):  # Long
+    type: random
+    distribution: normal
+    params:
+      mean: 500000
+      median: 500000
+      std_dev: 100000
+      max: 800000  # mean + 3*std_dev
+      min: 200000  # mean - 3*std_dev
+      precision: 0
+
+  varchar(150):  # IP
+    type: faker
+    provider: internet
+    method: ipv4
+
+  BINARY:  # Binary
+    type: random
+    distribution: binary
+    params:
+      length: 16
+
+  numeric(4,0):  # Short
+    type: random
+    distribution: normal
+    params:
+      mean: 5000
+      median: 5000
+      std_dev: 1000
+      max: 8000   # mean + 3*std_dev
+      min: 2000   # mean - 3*std_dev
+      precision: 0
+
+  TIMESTAMP:  # Time Stamp
+    type: faker
+    method: date_time_between
+    params:
+      start_date: "-5m"
+      end_date: "now"
+
+  numeric(16,2):  # BigDouble
+    type: random
+    distribution: normal
+    params:
+      mean: 10000.0
+      median: 10000.0
+      std_dev: 2000.0
+      max: 16000.0  # mean + 3*std_dev
+      min: 4000.0   # mean - 3*std_dev
+      precision: 2
+
+  BOOLEAN:  # Boolean
+    type: random
+    distribution: choice
+    params:
+      choices: [True, False]
+
+# Storage Configuration
+storage:
+  config:
+    enabled: true
+    mountPath: /app/data_simulator/config/config.yaml
+    subPath: config.yaml
+    existingClaim: ""
+    size: 1Gi
+    storageClass: ""
+    accessMode: ReadWriteOnce
+  columns:
+    enabled: true
+    mountPath: /app/data_simulator/config/columns
+    existingClaim: ""
+    size: 1Gi
+    storageClass: ""
+    accessMode: ReadWriteOnce
+  tables:
+    enabled: true
+    mountPath: /app/data_simulator/config/tables
+    existingClaim: ""
+    size: 1Gi
+    storageClass: ""
+    accessMode: ReadWriteOnce
+  useHostPath: false
+  hostPath:
+    basePath: "/tmp/data-simulator"
+
+xml_path:
+  cdr_template: "config/cdrs_template.xml"
+  fields_template: "config/fields_template.xml"
+
+yaml_path:
+  columns: "config/columns/columns.yaml"
+  tables: "config/tables"
+
+paths:
+  config_mount: /app/data_simulator/config/config.yaml
+  columns_mount: /app/data_simulator/config/columns
+  tables_mount: /app/data_simulator/config/tables
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []

@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: data-simulator-config
+data:
+  config.yaml: |
+    vertica:
+      host: {{ .Values.vertica.host | quote }}
+      port: {{ .Values.vertica.port }}
+      user: {{ .Values.vertica.user | quote }}
+      password: {{ .Values.vertica.password | quote }}
+      database: {{ .Values.vertica.database | quote }}
+      pool_size: {{ .Values.vertica.pool_size }}
+      schema: {{ .Values.vertica.schema | quote }}
+    
+    tables: {{ toYaml .Values.tables | nindent 6 }}
+    
+    generate_rows: {{ .Values.generate_rows }}
+    cron_schedule: {{ .Values.cron_schedule | quote }}
+    
+    type_mapping: {{ toYaml .Values.type_mapping | nindent 6 }}
+    
+    simulation_config: {{ toYaml .Values.simulation_config | nindent 6 }}
+    
+    xml_path:
+      cdr_template: {{ .Values.xml_path.cdr_template | quote }}
+      fields_template: {{ .Values.xml_path.fields_template | quote }}
+    
+    yaml_path:
+      columns: {{ .Values.paths.columns_mount | quote }}/columns.yaml
+      tables: {{ .Values.paths.tables_mount | quote }}
