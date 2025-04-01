@@ -93,23 +93,36 @@ class DataSimulator:
         
         table_config = self.tables[table_name]
         schema = {}
+        seen_columns = set()  # To track duplicate columns
 
         # Add primary key column
         if 'primary_key' in table_config:
             pk_column = table_config['primary_key']
-            schema[pk_column] = self.DEFAULT_PRIMARY_KEY_SCHEMA
-
+            if pk_column in seen_columns:
+                print(f"Warning: Duplicate primary key column '{pk_column}' in table '{table_name}' - keeping first occurrence")
+            else:
+                schema[pk_column] = self.DEFAULT_PRIMARY_KEY_SCHEMA
+                seen_columns.add(pk_column)
         # Add other columns
         for col in table_config.get('columns', []):
+            if col in seen_columns:
+                print(f"Warning: Duplicate column '{col}' in table '{table_name}' - skipping")
+                continue
+                
             if col in self.columns:
                 schema[col] = self.columns[col]
             else:
                 schema[col] = self.DEFAULT_COLUMN_SCHEMA
-                print(f"Warning: Using default schema for column {col} in table {table_name}")
-
+                print(f"Warning: Using default schema for column '{col}' in table '{table_name}'")
+            seen_columns.add(col)
         # Add foreign key columns
         for fk in table_config.get('foreign_keys', []):
             fk_column = fk['column']
+            
+            if fk_column in seen_columns:
+                print(f"Warning: Duplicate foreign key column '{fk_column}' in table '{table_name}' - skipping")
+                continue
+                
             ref_table = fk['references']['table']
             ref_column = fk['references']['column']
 
@@ -129,7 +142,7 @@ class DataSimulator:
                         "constraints": [f"foreign_key: {ref_table}.{ref_column}"],
                         "simulation": fk.get('simulation', {})
                     }
-                    print(f"Warning: Referenced column {ref_column} not found in table {ref_table}. Using default schema.")
+                    print(f"Warning: Referenced column '{ref_column}' not found in table '{ref_table}'. Using default schema.")
             else:
                 # If referenced table not found, use default schema
                 schema[fk_column] = {
@@ -137,8 +150,10 @@ class DataSimulator:
                     "constraints": [f"foreign_key: {ref_table}.{ref_column}"],
                     "simulation": fk.get('simulation', {})
                 }
-                print(f"Warning: Referenced table {ref_table} not found. Using default schema.")
-        
+                print(f"Warning: Referenced table '{ref_table}' not found. Using default schema.")
+            
+            seen_columns.add(fk_column)
+       
         return schema
     
     def _fetch_reference_data(self, ref_table, ref_column, chunk_size=1000):
@@ -173,15 +188,31 @@ class DataSimulator:
     def generate_data_parallel(self, table_name, num_records, batch_size=1000):
         # Pre-fetch all reference data first
         self.pre_fetch_references(table_name)
+
+        # Calculate the number of full batches and the remaining records
+        full_batches = num_records // batch_size
+        remaining_records = num_records % batch_size
         
         # Parallel generation
         futures = []
-        for i in range(0, num_records, batch_size):
+        
+        # Submit full batches
+        for _ in range(full_batches):
             futures.append(
                 self.executor.submit(
                     self._generate_batch,
                     table_name,
-                    min(batch_size, num_records - i)
+                    batch_size
+                )
+            )
+        
+        # Submit remaining records if any
+        if remaining_records > 0:
+           futures.append(
+                self.executor.submit(
+                    self._generate_batch,
+                    table_name,
+                    remaining_records
                 )
             )
         results = []
@@ -218,7 +249,7 @@ class DataSimulator:
         sim_config = col_config.get('simulation', {})
         
         if not sim_config:
-            raise ValueError(f"No simulation configuration found for the column: {col_config['field_name']}")
+            raise ValueError(f"No simulation configuration found for the column: {col_config.get('field_name')}")
 
         sim_type = sim_config.get('type')
         
@@ -231,8 +262,7 @@ class DataSimulator:
             params = sim_config.get('params', {})
             
             if not method:
-                print(sim_config)
-                raise ValueError("Faker configuration must include 'method'.")
+                raise ValueError(f"Faker configuration must include 'method' for column: {col_config.get('field_name')}")
             
             # Handle special cases like 'words'
             if provider == 'word' and method == 'words':
