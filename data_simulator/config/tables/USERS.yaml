@@ -1,0 +1,5 @@
+table_name: USERS
+primary_key: UNIQUE_ID
+columns:
+- NAME
+- TIME_STAMP

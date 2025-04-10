@@ -116,15 +116,17 @@ class DataSimulator:
                 print(f"Warning: Using default schema for column '{col}' in table '{table_name}'")
             seen_columns.add(col)
         # Add foreign key columns
-        for fk in table_config.get('foreign_keys', []):
-            fk_column = fk['column']
+        for fk_column in table_config.get('foreign_keys', []):
             
             if fk_column in seen_columns:
                 print(f"Warning: Duplicate foreign key column '{fk_column}' in table '{table_name}' - skipping")
                 continue
                 
-            ref_table = fk['references']['table']
-            ref_column = fk['references']['column']
+            try:
+                ref_table = table_config['foreign_keys'][fk_column]['references']['table']
+                ref_column = table_config['foreign_keys'][fk_column]['references']['column']
+            except:
+                print(f"Warning: foreign key '{fk_column}' is defined in table '{table_name}' without references")
 
             # Fetch foreign key definition from referenced table
             if ref_table in self.tables:
@@ -133,24 +135,16 @@ class DataSimulator:
                     schema[fk_column] = {
                         "type": ref_schema[ref_column]["type"],  # Use the same type as the referenced column
                         "constraints": [f"foreign_key: {ref_table}.{ref_column}"],
-                        "simulation": fk.get('simulation', {})
+                        "simulation": {
+                                        "type": "reference",
+                                        "table": ref_table,
+                                        "column": ref_column
+                                    }
                     }
                 else:
-                    # If referenced column not found, use default schema
-                    schema[fk_column] = {
-                        "type": "INT",  # Default type for foreign keys
-                        "constraints": [f"foreign_key: {ref_table}.{ref_column}"],
-                        "simulation": fk.get('simulation', {})
-                    }
-                    print(f"Warning: Referenced column '{ref_column}' not found in table '{ref_table}'. Using default schema.")
+                    print(f"Warning: foreign key Referenced column '{ref_column}' not found in table '{ref_table}'.")
             else:
-                # If referenced table not found, use default schema
-                schema[fk_column] = {
-                    "type": "INT",  # Default type for foreign keys
-                    "constraints": [f"foreign_key: {ref_table}.{ref_column}"],
-                    "simulation": fk.get('simulation', {})
-                }
-                print(f"Warning: Referenced table '{ref_table}' not found. Using default schema.")
+                print(f"Warning: foreign key Referenced table '{ref_table}' not found.")
             
             seen_columns.add(fk_column)
        
@@ -167,7 +161,7 @@ class DataSimulator:
         data = []
         last_id = None
         while True:
-            condition = f"rowid > {last_id}" if last_id else None
+            condition = None if not last_id else f"rowid > {last_id} and rowid < {chunk_size}" if last_id <= chunk_size else "rowid IS NULL"
             chunk = [
                 row[0] for row in self.db.read(
                     ref_table, 
@@ -179,7 +173,10 @@ class DataSimulator:
             if not chunk:
                 break
             data.extend(chunk)
-            last_id = chunk[-1]
+            if not last_id:
+                last_id = len(chunk) - 1
+            else:
+                last_id += len(chunk)
         
         # Cache the full list
         self.reference_cache[cache_key] = data

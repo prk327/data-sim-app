@@ -4,8 +4,8 @@
 app:
   name: data-simulator
   image:
-    repository: your-registry/data-simulator
-    tag: latest
+    repository: prk327/data_simulator
+    tag: v1
     pullPolicy: IfNotPresent
   replicaCount: 1
   env:
@@ -20,7 +20,7 @@ app:
       memory: 256Mi
 
 serviceAccount:
-  create: true
+  create: false
   name: ""
   annotations: {}
 
@@ -30,10 +30,10 @@ service:
 
 # Vertica Configuration
 vertica:
-  host: "host.docker.internal"
+  host: "vertica"
   port: 5433
-  user: "mydatabase"
-  password: "admin1234"
+  user: "omniq"
+  password: "radcom"
   database: "vdb"
   pool_size: 5
   schema: "omniq"
@@ -192,29 +192,29 @@ simulation_config:
 storage:
   config:
     enabled: true
-    mountPath: /app/data_simulator/config/config.yaml
+    mountPath: /app/data_simulator/config
     subPath: config.yaml
     existingClaim: ""
     size: 1Gi
-    storageClass: ""
+    storageClass: "hostpath"
     accessMode: ReadWriteOnce
   columns:
     enabled: true
     mountPath: /app/data_simulator/config/columns
     existingClaim: ""
     size: 1Gi
-    storageClass: ""
+    storageClass: "hostpath"
     accessMode: ReadWriteOnce
   tables:
     enabled: true
     mountPath: /app/data_simulator/config/tables
     existingClaim: ""
     size: 1Gi
-    storageClass: ""
+    storageClass: "hostpath"
     accessMode: ReadWriteOnce
-  useHostPath: false
+  useHostPath: true
   hostPath:
-    basePath: "/tmp/data-simulator"
+    basePath: "/home/prk327/workplace/projects/pythondevenv/NAM-Dev-App/vertica_db_app/data-simulator/config"
 
 xml_path:
   cdr_template: "config/cdrs_template.xml"
@@ -225,7 +225,7 @@ yaml_path:
   tables: "config/tables"
 
 paths:
-  config_mount: /app/data_simulator/config/config.yaml
+  # config_mount: /app/data_simulator/config/config.yaml
   columns_mount: /app/data_simulator/config/columns
   tables_mount: /app/data_simulator/config/tables
 

@@ -1,5 +1,6 @@
 columns:
-  user_id:
+  UNIQUE_ID:
+    field_name: unique id
     type: INT
     constraints:
       - primary_key
@@ -9,7 +10,8 @@ columns:
       start: 1000
       step: 1
 
-  product_id:
+  PRODUCTS_ID:
+    field_name: product id
     type: INT
     constraints:
       - primary_key
@@ -19,7 +21,8 @@ columns:
       start: 2000
       step: 1
       
-  amount:
+  AMOUNT:
+    field_name: amount
     type: DECIMAL(10,2)
     simulation:
       type: random
@@ -30,22 +33,27 @@ columns:
         max: 200
         min: 1
 
-  product_name:
+  NAME:
+    field_name: name
     type: VARCHAR(100)
     simulation:
       type: faker
+      method: words
       provider: words  # Use 'word' or 'sentence' for product names
+      method: words
       params:
         nb: 2   # Number of words in the product name
         # ext_word_list: []
         unique: False
 
-  username:
+  PRODUCT_NAME:
+    field_name: product name
     type: VARCHAR(50)
     constraints:
       - not_null
       - unique
     simulation:
+      method: words
       type: faker
       provider: words  # Use 'word' or 'sentence' for product names
       params:
@@ -54,6 +62,7 @@ columns:
         unique: False
 
   created_at:
+    field_name: created at
     type: TIMESTAMP
     simulation:
       type: date
@@ -61,7 +70,8 @@ columns:
         start: "2023-01-01"
         end: "2023-12-31"
 
-  order_date:
+  ORDER_DATE:
+    field_name: order date
     type: TIMESTAMP
     simulation:
       type: date

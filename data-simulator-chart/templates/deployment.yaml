@@ -39,16 +39,6 @@ spec:
               value: {{ $value | quote }}
             {{- end }}
           volumeMounts:
-            - name: config-volume
-              mountPath: /app/config
-              readOnly: true
-            {{- if .Values.storage.config.enabled }}
-            - name: dynamic-config
-              mountPath: {{ .Values.storage.config.mountPath }}
-              {{- if .Values.storage.config.subPath }}
-              subPath: {{ .Values.storage.config.subPath }}
-              {{- end }}
-            {{- end }}
             {{- if .Values.storage.columns.enabled }}
             - name: columns-config
               mountPath: {{ .Values.storage.columns.mountPath }}
@@ -62,17 +52,7 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: {{ include "data-simulator.fullname" . }}-config
-        {{- if and .Values.storage.config.enabled (not .Values.storage.useHostPath) (not .Values.storage.config.existingClaim) }}
-        - name: dynamic-config
-          persistentVolumeClaim:
-            claimName: {{ include "data-simulator.fullname" . }}-config
-        {{- end }}
-        {{- if and .Values.storage.config.enabled .Values.storage.config.existingClaim }}
-        - name: dynamic-config
-          persistentVolumeClaim:
-            claimName: {{ .Values.storage.config.existingClaim }}
-        {{- end }}
+            name: data-simulator-config
         {{- if and .Values.storage.columns.enabled (not .Values.storage.useHostPath) (not .Values.storage.columns.existingClaim) }}
         - name: columns-config
           persistentVolumeClaim:
@@ -94,10 +74,6 @@ spec:
             claimName: {{ .Values.storage.tables.existingClaim }}
         {{- end }}
         {{- if .Values.storage.useHostPath }}
-        - name: dynamic-config
-          hostPath:
-            path: {{ printf "%s/config.yaml" .Values.storage.hostPath.basePath }}
-            type: File
         - name: columns-config
           hostPath:
             path: {{ printf "%s/columns" .Values.storage.hostPath.basePath }}

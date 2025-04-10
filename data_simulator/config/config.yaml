@@ -1,8 +1,8 @@
 vertica:
   host: "host.docker.internal"  # to connect to host from wsl use "host.docker.internal"
   port: 5433
-  user: "mydatabase"
-  password: "admin1234"
+  user: "dbadmin"
+  password: "radcom"
   database: "vdb"
   pool_size: 5
   schema: "omniq"
@@ -26,6 +26,9 @@ tables:
   - CDR_RRC_X2_LTE
   - CDR_PFCP
   - CDR_MASTER_SESSION_COMPOSITE
+  - USERS
+  - PRODUCTS
+  - ORDERS
 
 # configure how many rows needs to be geretated based on each cron schedule
 generate_rows: 1000

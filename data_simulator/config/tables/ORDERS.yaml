@@ -1,0 +1,15 @@
+table_name: ORDERS
+primary_key: ORDER_ID
+columns:
+- ORDER_DATE
+- AMOUNT
+
+foreign_keys:
+  UNIQUE_ID:
+    references:
+      table: USERS
+      column: UNIQUE_ID
+  PRODUCTS_ID:
+    references:
+      table: PRODUCTS
+      column: PRODUCTS_ID
