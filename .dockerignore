@@ -30,6 +30,10 @@ venv/
 env/
 .venv/
 .env/
+__pycache__/
+*.py[cod]
+*$py.class
+build/
 
 # Installer logs
 pip-log.txt

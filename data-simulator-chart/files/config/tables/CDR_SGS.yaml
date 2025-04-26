@@ -1,0 +1,5 @@
+columns:
+- FRAMES_COUNT
+- FRAMES_COUNT_SAVED
+- START_HOUR
+table_name: CDR_SGS

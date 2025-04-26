@@ -131,18 +131,20 @@ class ConfigGenerator:
                 'xt': 'http://radcom.com/XSDTypes.xsd'
             }
             table_element = root.find(f'.//ns:cdr[@table-name="{table_name}"]', namespaces)
-            if table_element is not None:
-                primary_key_field = table_element.attrib.get('unique-field', '').replace(' ', '_')
-                primary_key = field_to_column.get(primary_key_field, primary_key_field)
-            else:
-                primary_key = ''  # Fallback if primary key is not found
 
-            # Build YAML config
+            # Initialize YAML config with required fields
             yaml_config = {
                 'table_name': table_name,
-                'primary_key': primary_key,  # Use the extracted primary key
                 'columns': columns
             }
+
+            # Only add primary_key if unique-field exists and has value
+            if table_element is not None:
+                unique_field = table_element.attrib.get('unique-field', '').strip()
+                if unique_field:  # Only proceed if unique-field has a value
+                    primary_key_field = unique_field.replace(' ', '_')
+                    primary_key = field_to_column.get(primary_key_field, primary_key_field)
+                    yaml_config['primary_key'] = primary_key
 
             # Write to YAML file
             output_path = yaml_paths['tables'] / f"{table_name}.yaml"
@@ -183,6 +185,7 @@ class ConfigGenerator:
             field_name = field.attrib.get('name', '')
             column_name = field.find('.//database/column-name')
             field_type = field.attrib.get('type', '')
+            length_tag = field.find('length')
 
             if column_name is not None and column_name.text and field_type:
                 # Check if the field belongs to any of the specified tables
@@ -193,8 +196,20 @@ class ConfigGenerator:
                 if not belongs_to_table:
                     continue  # Skip fields not belonging to any table
 
-                # Default to VARCHAR(100) if type is missing in type_mapping
+                # Get base type from mapping
                 db_type = type_mapping.get(field_type, "varchar(200)")
+
+                # Apply length tag for String and IP types
+                if length_tag is not None and length_tag.text and field_type in ['String', 'IP']:
+                    try:
+                        length = int(length_tag.text)
+                        if field_type == 'String':
+                            db_type = f"varchar({length})"
+                        elif field_type == 'IP':
+                            db_type = f"varchar({length})"  # Or keep original IP mapping if different
+                    except ValueError:
+                        self.logger.warning(f"Invalid length value for field: {field_name}. Using default type.")
+
                 if field_type not in type_mapping:
                     self.logger.warning(f"Missing type mapping for field: {field_name}, type: {field_type}. Defaulting to varchar(200).")
 

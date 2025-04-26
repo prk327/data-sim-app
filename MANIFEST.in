@@ -1,0 +1,4 @@
+include data_simulator/config/*.yaml
+include data_simulator/sql/*.yaml
+include data_simulator/config/columns/*.yaml
+include data_simulator/config/tables/*.yaml

@@ -28,7 +28,7 @@ RUN pip install --upgrade pip \
     && rm -rf /root/.cache/pip
 
 # Install the custom package app
-RUN pip install /app
+# RUN pip install /app
 
 # Add entrypoint script
 COPY entrypoint.sh /app/entrypoint.sh

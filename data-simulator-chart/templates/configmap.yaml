@@ -1,31 +1,21 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: data-simulator-config
+  name: {{ include "data-simulator.configmapName" . }}
+  labels:
+    {{- include "data-simulator.labels" . | nindent 4 }}
 data:
-  config.yaml: |
-    vertica:
-      host: {{ .Values.vertica.host | quote }}
-      port: {{ .Values.vertica.port }}
-      user: {{ .Values.vertica.user | quote }}
-      password: {{ .Values.vertica.password | quote }}
-      database: {{ .Values.vertica.database | quote }}
-      pool_size: {{ .Values.vertica.pool_size }}
-      schema: {{ .Values.vertica.schema | quote }}
-    
-    tables: {{ toYaml .Values.tables | nindent 6 }}
-    
-    generate_rows: {{ .Values.generate_rows }}
-    cron_schedule: {{ .Values.cron_schedule | quote }}
-    
-    type_mapping: {{ toYaml .Values.type_mapping | nindent 6 }}
-    
-    simulation_config: {{ toYaml .Values.simulation_config | nindent 6 }}
-    
-    xml_path:
-      cdr_template: {{ .Values.xml_path.cdr_template | quote }}
-      fields_template: {{ .Values.xml_path.fields_template | quote }}
-    
-    yaml_path:
-      columns: {{ .Values.paths.columns_mount | quote }}/columns.yaml
-      tables: {{ .Values.paths.tables_mount | quote }}
+  {{ .Values.config.files.mainConfig | base }}: |-
+    {{- .Files.Get (printf "files/%s" .Values.config.files.mainConfig) | nindent 4 }}
+  {{- range $col := .Values.config.files.columns }}
+  {{ $col | base }}: |-
+    {{- $.Files.Get (printf "files/%s" $col) | nindent 4 }}
+  {{- end }}
+  {{- range $table := .Values.config.files.tables }}
+  {{ $table | base }}: |-
+    {{- $.Files.Get (printf "files/%s" $table) | nindent 4 }}
+  {{- end }}
+  {{- range $sql := .Values.config.files.sql }}
+  {{ $sql | base }}: |-
+    {{- $.Files.Get (printf "files/%s" $sql) | nindent 4 }}
+  {{- end }}

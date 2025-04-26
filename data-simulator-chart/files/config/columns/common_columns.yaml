@@ -1,0 +1,80 @@
+columns:
+  UNIQUE_ID:
+    field_name: unique id
+    type: INT
+    constraints:
+      - primary_key
+      - auto_increment
+    simulation:
+      type: sequence
+      start: 1000
+      step: 1
+
+  PRODUCTS_ID:
+    field_name: product id
+    type: INT
+    constraints:
+      - primary_key
+      - auto_increment
+    simulation:
+      type: sequence
+      start: 2000
+      step: 1
+      
+  AMOUNT:
+    field_name: amount
+    type: DECIMAL(10,2)
+    simulation:
+      type: random
+      distribution: normal
+      params:
+        mean: 100.0
+        std_dev: 25.0
+        max: 200
+        min: 1
+
+  NAME:
+    field_name: name
+    type: VARCHAR(100)
+    simulation:
+      type: faker
+      method: words
+      provider: words  # Use 'word' or 'sentence' for product names
+      method: words
+      params:
+        nb: 2   # Number of words in the product name
+        # ext_word_list: []
+        unique: False
+
+  PRODUCT_NAME:
+    field_name: product name
+    type: VARCHAR(50)
+    constraints:
+      - not_null
+      - unique
+    simulation:
+      method: words
+      type: faker
+      provider: words  # Use 'word' or 'sentence' for product names
+      params:
+        nb: 1   # Number of words in the product name
+        # ext_word_list: []
+        unique: False
+
+  created_at:
+    field_name: created at
+    type: TIMESTAMP
+    simulation:
+      type: date
+      range:
+        start: "2023-01-01"
+        end: "2023-12-31"
+
+  ORDER_DATE:
+    field_name: order date
+    type: TIMESTAMP
+    simulation:
+      type: date
+      range:
+        start: "2024-01-01"
+        end: "2024-12-31"

@@ -2,11 +2,9 @@ import yaml
 from pathlib import Path
 from faker import Faker
 import random
-from datetime import datetime, timedelta
-from .db_operations import VerticaDB
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import List, Dict, Iterable, Tuple
-from threading import Lock
+from data_simulator.db_operations import VerticaDB
+from concurrent.futures import as_completed
+from typing import List, Dict, Iterable
 
 class DataSimulator:
 
@@ -32,36 +30,41 @@ class DataSimulator:
         
         
     def __init__(self, config_path: dict):
+        """
+        Initialize DataSimulator with flexible path handling.
+        
+        Args:
+            config_path: Can be either:
+                - Absolute path (/path/to/config.yaml)
+                - Relative path from project root (config/config.yaml)
+                - Relative path from calling script
+        """
         self.faker = Faker()
-        self.script_dir = Path(__file__).parent
-        self.config_path = self.script_dir / config_path
-        self.config = self._load_config()
+        abs_config_path = str(Path(__file__).parent.parent / config_path)
+        self.db = VerticaDB(abs_config_path)  # Central resource hub
+        
+        # Reuse resources from VerticaDB instance
+        self.config = self.db.config
+        self.executor = self.db.executor
+        self.pool_lock = self.db.pool_lock
+        
+        # Load configurations using VerticaDB's path resolution
         self.tables = self._load_table_configs()
         self.columns = self._load_column_configs()
         self.generated_data = {}
         self.reference_cache = {}
-        self.cache_lock = Lock()  # Lock for thread safety
-        self.db = VerticaDB(config_path)
-        self.executor = ThreadPoolExecutor(max_workers=self.config.get('max_workers', 4))
 
-    def _load_config(self):
-        """
-        Loads the configuration from the YAML file.
-        """
-        with open(self.config_path, 'r') as f:
-            return yaml.safe_load(f)
+    def _load_config(self, config_path: str):
+        """Config already loaded by VerticaDB"""
+        return self.db.config
 
-    def _resolve_paths(self, key):
-        """
-        Resolves paths relative to the script directory.
-        """
-        return {
-            k: (self.script_dir / v).resolve()
-            for k, v in self.config[key].items()
-        }
+    def _resolve_path(self, path_key: str) -> Path:
+        """Reuse VerticaDB's path resolution strategy"""
+        return self.db._resolve_config_path(self.config['yaml_path'][path_key])
 
     def _load_table_configs(self):
-        tables_dir = self._resolve_paths('yaml_path')['tables']
+        """Load table configurations using shared path resolution"""
+        tables_dir = self._resolve_path('tables')
         table_configs = {}
         
         for table_file in tables_dir.glob('*.yaml'):
@@ -73,11 +76,8 @@ class DataSimulator:
         return table_configs
         
     def _load_column_configs(self):
-        columns_dir = self._resolve_paths('yaml_path')['columns']
-        # Convert to Path object
-        columnpath = Path(columns_dir)
-        # Get the parent directory
-        columns_dir = columnpath.parent
+        """Load column configurations using shared path resolution"""
+        columns_dir = self._resolve_path('columns')
         column_configs = {}
 
         for column_file in columns_dir.glob('*.yaml'):
@@ -243,59 +243,87 @@ class DataSimulator:
         return record
 
     def _generate_column_data(self, col_config):
+        """
+        Generates data for a column with optional null values.
+        
+        Args:
+            col_config: Column configuration dictionary containing:
+                - simulation: Simulation configuration
+                - null_probability: Probability of generating null (0-1, default 0)
+                
+        Returns:
+            Generated data or None (for null values)
+        """
+        # Check for null probability (default to 0 if not specified)
+        null_prob = col_config.get('null_probability', 0)
+
+         # Generate null value if probability triggers
+        if null_prob > 0 and random.random() < null_prob:
+            return None
+
         sim_config = col_config.get('simulation', {})
         
         if not sim_config:
             raise ValueError(f"No simulation configuration found for the column: {col_config.get('field_name')}")
 
         sim_type = sim_config.get('type')
+
+        try:
         
-        if sim_type == 'sequence':
-            return self._handle_sequence(col_config)
-            
-        elif sim_type == 'faker':
-            provider = sim_config.get('provider')
-            method = sim_config.get('method')
-            params = sim_config.get('params', {})
-            
-            if not method:
-                raise ValueError(f"Faker configuration must include 'method' for column: {col_config.get('field_name')}")
-            
-            # Handle special cases like 'words'
-            if provider == 'word' and method == 'words':
-                return ' '.join(self.faker.words(**params))
-
-            # Handle cases where the method is directly available on the Faker instance
-            if hasattr(self.faker, method):
-                return getattr(self.faker, method)(**params)
-
-            # Handle cases where the method is part of a provider
-            if provider:
-                faker_provider = getattr(self.faker, provider)
-                if hasattr(faker_provider, method):
-                    return getattr(faker_provider, method)(**params)
-                else:
-                    raise ValueError(f"Method '{method}' not found in provider '{provider}'.")
-            else:
-                raise ValueError(f"Method '{method}' not found in Faker instance.")
+            if sim_type == 'sequence':
+                return self._handle_sequence(col_config)
                 
-        elif sim_type == 'enum':
-            values = sim_config.get('values')
-            weights = sim_config.get('weights')
-            
-            if not values:
-                raise ValueError("Enum configuration must include 'values'.")
-            
-            return random.choices(values, weights=weights, k=1)[0]
-            
-        elif sim_type == 'random':
-            return self._generate_random_value(sim_config)
-            
-        elif sim_type == 'date':
-            return self._generate_date(sim_config)
-            
-        else:
-            raise ValueError(f"Unsupported simulation type: {sim_type}")
+            elif sim_type == 'faker':
+                provider = sim_config.get('provider')
+                method = sim_config.get('method')
+                params = sim_config.get('params', {})
+                
+                if not method:
+                    raise ValueError(f"Faker configuration must include 'method' for column: {col_config.get('field_name')}")
+                
+                # Handle special cases like 'words'
+                if provider == 'word' and method == 'words':
+                    return ' '.join(self.faker.words(**params))
+
+                # Handle cases where the method is directly available on the Faker instance
+                if hasattr(self.faker, method):
+                    result = getattr(self.faker, method)(**params)
+                    return None if result is None else str(result)  # Convert to string unless None
+
+                # Handle cases where the method is part of a provider
+                if provider:
+                    faker_provider = getattr(self.faker, provider)
+                    if hasattr(faker_provider, method):
+                        result = getattr(faker_provider, method)(**params)
+                        return None if result is None else str(result)
+                    raise ValueError(f"Method '{method}' not found in provider '{provider}'")
+                raise ValueError(f"Method '{method}' not found in Faker instance")
+                    
+            elif sim_type == 'enum':
+                values = sim_config.get('values')
+                weights = sim_config.get('weights')
+                
+                if not values:
+                    raise ValueError("Enum configuration must include 'values'.")
+                
+                return random.choices(values, weights=weights, k=1)[0]
+                
+            elif sim_type == 'random':
+                return self._generate_random_value(sim_config)
+                
+            elif sim_type == 'date':
+                date_value = self._generate_date(sim_config)
+                return date_value.strftime('%Y-%m-%d %H:%M:%S') if date_value else None
+
+            elif sim_type == 'constant':
+                return sim_config.get('value')
+                
+            else:
+                raise ValueError(f"Unsupported simulation type: {sim_type}")
+
+        except Exception as e:
+            self.logger.error(f"Error generating data for {col_config.get('field_name')}: {str(e)}")
+            return None  # Fallback to null on error
 
     def _handle_sequence(self, col_config):
         sim_config = col_config.get('simulation', {})
@@ -375,7 +403,9 @@ class DataSimulator:
         yield None  # Sentinel value to signal end of data
 # Usage Example
 if __name__ == "__main__":
-    simulator = DataSimulator("config/config.yaml")
+    from data_simulator.utils import get_config_path
+    config_path = get_config_path("config.yaml")
+    simulator = DataSimulator(config_path)
 
     products = simulator.generate_data_parallel('products', 500)
     simulator.db.batch_insert('products', products)

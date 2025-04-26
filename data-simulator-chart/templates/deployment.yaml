@@ -8,90 +8,50 @@ spec:
   replicas: {{ .Values.app.replicaCount }}
   selector:
     matchLabels:
-      {{- include "data-simulator.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/name: {{ .Chart.Name }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        {{- include "data-simulator.selectorLabels" . | nindent 8 }}
-      annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        {{- include "data-simulator.labels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      serviceAccountName: {{ include "data-simulator.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+       {{- if .Values.serviceAccount.create }}
+      serviceAccountName: {{ include "data-simulator.fullname" . }}
+        {{- else }}
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+        {{- end }}
       containers:
         - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.app.image.repository }}:{{ .Values.app.image.tag }}"
           imagePullPolicy: {{ .Values.app.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: 80
-              protocol: TCP
-          env:
-            {{- range $key, $value := .Values.app.env }}
-            - name: {{ $key }}
-              value: {{ $value | quote }}
-            {{- end }}
           volumeMounts:
-            {{- if .Values.storage.columns.enabled }}
-            - name: columns-config
-              mountPath: {{ .Values.storage.columns.mountPath }}
-            {{- end }}
-            {{- if .Values.storage.tables.enabled }}
-            - name: tables-config
-              mountPath: {{ .Values.storage.tables.mountPath }}
-            {{- end }}
+          {{- if .Values.config.mountFolders }}
+              - name: config-volume
+                mountPath: {{ .Values.config.folderPaths.config }}
+                readOnly: true
+              - name: config-volume
+                mountPath: {{ .Values.config.folderPaths.sql }}
+                subPath: sql
+                readOnly: true
+          {{- else }}
+            {{- include "data-simulator.configVolumeMounts" . | nindent 12 }}
+          {{- end }}
           resources:
             {{- toYaml .Values.app.resources | nindent 12 }}
       volumes:
         - name: config-volume
           configMap:
-            name: data-simulator-config
-        {{- if and .Values.storage.columns.enabled (not .Values.storage.useHostPath) (not .Values.storage.columns.existingClaim) }}
-        - name: columns-config
-          persistentVolumeClaim:
-            claimName: {{ include "data-simulator.fullname" . }}-columns
-        {{- end }}
-        {{- if and .Values.storage.columns.enabled .Values.storage.columns.existingClaim }}
-        - name: columns-config
-          persistentVolumeClaim:
-            claimName: {{ .Values.storage.columns.existingClaim }}
-        {{- end }}
-        {{- if and .Values.storage.tables.enabled (not .Values.storage.useHostPath) (not .Values.storage.tables.existingClaim) }}
-        - name: tables-config
-          persistentVolumeClaim:
-            claimName: {{ include "data-simulator.fullname" . }}-tables
-        {{- end }}
-        {{- if and .Values.storage.tables.enabled .Values.storage.tables.existingClaim }}
-        - name: tables-config
-          persistentVolumeClaim:
-            claimName: {{ .Values.storage.tables.existingClaim }}
-        {{- end }}
-        {{- if .Values.storage.useHostPath }}
-        - name: columns-config
-          hostPath:
-            path: {{ printf "%s/columns" .Values.storage.hostPath.basePath }}
-            type: Directory
-        - name: tables-config
-          hostPath:
-            path: {{ printf "%s/tables" .Values.storage.hostPath.basePath }}
-            type: Directory
-        {{- end }}
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+            name: {{ include "data-simulator.fullname" . }}-config
+            {{- if .Values.config.mountFolders }}
+            items:
+              - key: columns/
+                path: columns/
+              - key: tables/
+                path: tables/
+              - key: config.yaml
+                path: config.yaml
+            {{- end }}
+      metadata:
+        annotations:
+          checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+            

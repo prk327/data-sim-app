@@ -18,6 +18,7 @@ dist/
 build/
 *.tar.gz
 *.whl
+data_simulator/package_data/
 
 # Python test / coverage reports
 *.cover

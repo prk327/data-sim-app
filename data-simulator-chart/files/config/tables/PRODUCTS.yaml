@@ -1,0 +1,4 @@
+table_name: PRODUCTS
+primary_key: PRODUCTS_ID
+columns:
+- PRODUCT_NAME

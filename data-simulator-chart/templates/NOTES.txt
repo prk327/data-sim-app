@@ -1,29 +1,47 @@
-1. Data Simulator has been deployed!
+DATA SIMULATOR APPLICATION DEPLOYED SUCCESSFULLY
 
+1. Application Status:
+   Running {{ .Values.app.replicaCount }} replica(s) of the data simulator
+   Pod status: kubectl get pods -l app.kubernetes.io/name={{ .Chart.Name }} -n {{ .Release.Namespace }}
+
+2. Configuration Files:
+   All configuration files are mounted at these container paths:
+   - Main config: /app/data_simulator/config/config.yaml
+   - Column definitions: /app/data_simulator/config/columns/columns.yaml
+   - Table definitions: /app/data_simulator/config/tables/
+     {{`- CDR_GN.yaml`}}
+     {{`- CDR_S1AP.yaml`}}
+   - SQL scripts: /app/data_simulator/sql/
+     {{`- delete.sql`}}
+     {{`- insert.sql`}}
+     {{`- read.sql`}}
+     {{`- update.sql`}}
+
+3. Verify Deployment:
+   Check application logs:
+   kubectl logs -l app.kubernetes.io/name={{ .Chart.Name }} -n {{ .Release.Namespace }} --tail=50
+
+4. Access Methods:
 {{- if .Values.ingress.enabled }}
-2. Application can be accessed through these URLs:
-{{- range .Values.ingress.hosts }}
-  http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .host }}{{ $.Values.ingress.path }}
-{{- end }}
-{{- else }}
-2. Application is not exposed through Ingress. To access it:
-{{- if contains "NodePort" .Values.service.type }}
-  export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ include "data-simulator.fullname" . }})
-  export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
-  echo http://$NODE_IP:$NODE_PORT
+   {{- $protocol := "http" }}
+   {{- if .Values.ingress.tls }}{{ $protocol = "https" }}{{ end }}
+   - Web URL: {{ $protocol }}://{{ index .Values.ingress.hosts 0 "host" }}
+{{- else if contains "ClusterIP" .Values.service.type }}
+   - Port-forward: kubectl port-forward svc/{{ include "data-simulator.fullname" . }} {{ .Values.service.port }}:{{ .Values.service.port }} -n {{ .Release.Namespace }}
+     Then access: http://localhost:{{ .Values.service.port }}
 {{- else if contains "LoadBalancer" .Values.service.type }}
-     NOTE: It may take a few minutes for the LoadBalancer IP to be available.
-           You can watch the status by running 'kubectl get --namespace {{ .Release.Namespace }} svc -w {{ include "data-simulator.fullname" . }}'
-  export SERVICE_IP=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ include "data-simulator.fullname" . }} -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-  echo http://$SERVICE_IP:{{ .Values.service.port }}
-{{- else }}
-  To access the application, use port-forwarding:
-  kubectl port-forward svc/{{ include "data-simulator.fullname" . }} 8080:80
-{{- end }}
+   - External IP: kubectl get svc {{ include "data-simulator.fullname" . }} -n {{ .Release.Namespace }} -w
+{{- else if contains "NodePort" .Values.service.type }}
+   - NodePort: kubectl get svc {{ include "data-simulator.fullname" . }} -n {{ .Release.Namespace }} -o jsonpath='{.spec.ports[0].nodePort}'
 {{- end }}
 
-3. To monitor the data generation process:
-   kubectl logs -f $(kubectl get pods -l app.kubernetes.io/name={{ include "data-simulator.name" . }} -o jsonpath='{.items[0].metadata.name}')
+5. Maintenance Commands:
+   - Restart pods: kubectl rollout restart deployment/{{ include "data-simulator.fullname" . }} -n {{ .Release.Namespace }}
+   - View ConfigMap: kubectl describe configmap {{ include "data-simulator.configmapName" . }} -n {{ .Release.Namespace }}
 
-4. To access the configuration files:
-   kubectl exec -it $(kubectl get pods -l app.kubernetes.io/name={{ include "data-simulator.name" . }} -o jsonpath='{.items[0].metadata.name}') -- ls -la /app/data_simulator/config
+6. Uninstallation:
+   helm uninstall {{ .Release.Name }} -n {{ .Release.Namespace }}
+
+Need help?
+- Documentation: https://github.com/your-repo/data-simulator
+- Issues: https://github.com/your-repo/data-simulator/issues

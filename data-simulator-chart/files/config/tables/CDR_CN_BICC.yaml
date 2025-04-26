@@ -1,0 +1,7 @@
+columns:
+- DEST_NE_NAME
+- SOURCE_NE_NAME
+- FRAMES_COUNT_SAVED
+- START_HOUR
+primary_key: CDR_ID
+table_name: CDR_CN_BICC

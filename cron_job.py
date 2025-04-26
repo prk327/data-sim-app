@@ -1,8 +1,9 @@
 from data_simulator import DataSimulator
-import yaml
+from data_simulator.utils import get_config_path
 from tqdm import tqdm
 
-simulator = DataSimulator('config/config.yaml')
+config_path = get_config_path("config.yaml")
+simulator = DataSimulator(config_path)
 
 tables = simulator.config.get('tables')
 

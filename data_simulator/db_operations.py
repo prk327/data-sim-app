@@ -14,44 +14,113 @@ logger = logging.getLogger(__name__)
 
 class VerticaDB:
     def __init__(self, config_path):
-        self.script_dir = Path(__file__).parent
-        self.config_path = self.script_dir / config_path
+        """
+        Initialize VerticaDB with flexible path handling.
+        
+        Args:
+            config_path: Can be either:
+                - Absolute path (/path/to/config.yaml)
+                - Relative path from project root (config/config.yaml)
+                - Relative path from calling script
+        """
+        # Try multiple path resolution strategies
+        self.config_path = self._resolve_config_path(config_path)
         self.config = self._load_config()
-        self.schema = self.config.get('schema', 'public')  # Default schema is 'public'
+        self.schema = self.config['vertica'].get('schema', 'public')
         self.connection_pool = []
         self.pool_lock = Lock()
         self._init_pool()
         self.sql_templates = self._load_sql_templates()
-        self.executor = ThreadPoolExecutor(max_workers=self.config.get('max_workers', 4))
+        self.executor = ThreadPoolExecutor(max_workers=self.config['vertica'].get('max_workers', 4))
+
+    def _resolve_config_path(self, config_path):
+        """Resolve config path using multiple strategies for installed packages"""
+        path = Path(config_path)
+        
+        # 1. Check if absolute path exists
+        if path.is_absolute() and path.exists():
+            return path
+        
+        # 2. Try relative to package installation
+        package_dir = Path(__file__).parent.parent
+        package_path = package_dir / config_path
+        if package_path.exists():
+            return package_path
+        
+        # 3. Try relative to user's working directory
+        cwd_path = Path.cwd() / config_path
+        if cwd_path.exists():
+            return cwd_path
+        
+        # 4. Try common config locations
+        common_locations = [
+            Path("/etc/data_simulator") / config_path,
+            Path.home() / ".config" / "data_simulator" / config_path,
+            Path.home() / "data_simulator" / config_path
+        ]
+        
+        for location in common_locations:
+            if location.exists():
+                return location
+        
+        raise FileNotFoundError(
+            f"Could not locate config file at: {config_path}\n"
+            f"Tried locations:\n"
+            f"- Package relative: {package_path}\n"
+            f"- Working dir: {cwd_path}\n"
+            f"- Common locations: {common_locations}"
+        )
+
+    def _find_project_root(self):
+        """Find project root by looking for setup.py or other marker files"""
+        current = Path(__file__).parent
+        while current != current.parent:
+            if (current / 'setup.py').exists() or (current / 'pyproject.toml').exists():
+                return current
+            current = current.parent
+        return None
 
     def _load_config(self):
         """
         Loads the configuration from the YAML file.
         """
         with open(self.config_path, 'r') as f:
-            return yaml.safe_load(f)['vertica']
+            return yaml.safe_load(f)
 
     def _load_sql_templates(self):
+        """Load SQL templates from sql directory"""
+        # Try multiple locations for SQL templates
+        possible_sql_dirs = [
+            Path(__file__).parent / 'sql',              # Relative to this file
+            self.config_path.parent / 'sql',            # Relative to config
+            self._find_project_root() / 'data_simulator' / 'sql'  # Project structure
+        ]
+        
         templates = {}
-        sql_dir = self.script_dir / 'sql'
-        for sql_file in sql_dir.glob('*.sql'):
-            with open(sql_file) as f:
-                templates[sql_file.stem] = Template(f.read())
+        for sql_dir in possible_sql_dirs:
+            if sql_dir.exists():
+                for sql_file in sql_dir.glob('*.sql'):
+                    with open(sql_file) as f:
+                        templates[sql_file.stem] = Template(f.read())
+                break
+        else:
+            raise FileNotFoundError("Could not locate SQL templates directory")
+        
         return templates
 
     def _create_connection(self):
         return connect(
-            host=self.config['host'],
-            port=self.config['port'],
-            user=self.config['user'],
-            password=self.config['password'],
-            database=self.config['database'],
+            host=self.config['vertica']['host'],
+            port=self.config['vertica']['port'],
+            user=self.config['vertica']['user'],
+            password=self.config['vertica']['password'],
+            database=self.config['vertica']['database'],
             tlsmode='disable'
         )
 
     def _init_pool(self):
         with self.pool_lock:
-            for _ in range(self.config['pool_size']):
+            for _ in range(self.config['vertica']['pool_size']):
                 self.connection_pool.append(self._create_connection())
 
     def get_connection(self):
@@ -62,7 +131,7 @@ class VerticaDB:
 
     def release_connection(self, conn):
         with self.pool_lock:
-            if len(self.connection_pool) < self.config['pool_size']:
+            if len(self.connection_pool) < self.config['vertica']['pool_size']:
                 self.connection_pool.append(conn)
             else:
                 logger.info(f"Connection pool size: {len(self.connection_pool)}")
@@ -212,17 +281,21 @@ class VerticaDB:
 
 # Example Usage
 if __name__ == "__main__":
-    db = VerticaDB("config/config.yaml")
+    from data_simulator.utils import get_config_path
+    config_path = get_config_path("config.yaml")
+    db = VerticaDB(config_path)
     
     # Insert example
-    db.insert('users', {'username': 'John Doe', 'created_at': "2024-05-24"})
+    db.insert('CDR_GI', {'TIME_STAMP': '2025-04-25 15:09:54.644', 'MEASURING_PROBE_TYPE': 'sms voice network', 'START_TIME': '2025-04-25 15:09:47.870', 'SESSION_ID': '432216', 'MEASURING_PROBE_NAME': 'device network sms'})
+    db.insert('CDR_GI', {'TIME_STAMP': '2025-04-25 15:10:24.593', 'MEASURING_PROBE_TYPE': 'mms subscription voice', 'START_TIME': '2025-04-25 15:09:58.326', 'SESSION_ID': '404357', 'MEASURING_PROBE_NAME': 'mms sms voice'})
+    db.insert('CDR_GI', {'TIME_STAMP': '2025-04-25 15:09:29.470', 'MEASURING_PROBE_TYPE': 'data roaming network', 'START_TIME': '2025-04-25 15:11:15.850', 'SESSION_ID': '455778', 'MEASURING_PROBE_NAME': 'device network sms'})
     
     # Read example
-    results = db.read('users', columns='*', condition='created_at > 25')
+    results = db.read('CDR_GI', columns='TIME_STAMP, MEASURING_PROBE_TYPE, START_TIME, SESSION_ID, MEASURING_PROBE_NAME', condition='SESSION_ID = 404357')
     print(results)
     
     # Update example
-    db.update('users', {'age': 31}, condition="name = 'John Doe'")
+    db.update('CDR_GI', {'MEASURING_PROBE_NAME': 'call sms data'}, condition="SESSION_ID = 432216")
     
     # Delete example
-    db.delete('users', condition="name = 'John Doe'")
+    db.delete('CDR_GI', condition="SESSION_ID = 404357")
